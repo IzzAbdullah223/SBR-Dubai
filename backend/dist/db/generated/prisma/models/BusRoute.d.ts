@@ -1,0 +1,1519 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model BusRoute
+ *
+ */
+export type BusRouteModel = runtime.Types.Result.DefaultSelection<Prisma.$BusRoutePayload>;
+export type AggregateBusRoute = {
+    _count: BusRouteCountAggregateOutputType | null;
+    _avg: BusRouteAvgAggregateOutputType | null;
+    _sum: BusRouteSumAggregateOutputType | null;
+    _min: BusRouteMinAggregateOutputType | null;
+    _max: BusRouteMaxAggregateOutputType | null;
+};
+export type BusRouteAvgAggregateOutputType = {
+    id: number | null;
+    duration: number | null;
+    distance: number | null;
+    numStops: number | null;
+};
+export type BusRouteSumAggregateOutputType = {
+    id: number | null;
+    duration: number | null;
+    distance: number | null;
+    numStops: number | null;
+};
+export type BusRouteMinAggregateOutputType = {
+    id: number | null;
+    routeNumber: string | null;
+    name: string | null;
+    duration: number | null;
+    distance: number | null;
+    numStops: number | null;
+    color: string | null;
+    textColor: string | null;
+    type: string | null;
+    ineId: string | null;
+    lineIdReturn: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BusRouteMaxAggregateOutputType = {
+    id: number | null;
+    routeNumber: string | null;
+    name: string | null;
+    duration: number | null;
+    distance: number | null;
+    numStops: number | null;
+    color: string | null;
+    textColor: string | null;
+    type: string | null;
+    ineId: string | null;
+    lineIdReturn: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BusRouteCountAggregateOutputType = {
+    id: number;
+    routeNumber: number;
+    name: number;
+    schedule: number;
+    fare: number;
+    duration: number;
+    distance: number;
+    numStops: number;
+    color: number;
+    textColor: number;
+    type: number;
+    ineId: number;
+    lineIdReturn: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type BusRouteAvgAggregateInputType = {
+    id?: true;
+    duration?: true;
+    distance?: true;
+    numStops?: true;
+};
+export type BusRouteSumAggregateInputType = {
+    id?: true;
+    duration?: true;
+    distance?: true;
+    numStops?: true;
+};
+export type BusRouteMinAggregateInputType = {
+    id?: true;
+    routeNumber?: true;
+    name?: true;
+    duration?: true;
+    distance?: true;
+    numStops?: true;
+    color?: true;
+    textColor?: true;
+    type?: true;
+    ineId?: true;
+    lineIdReturn?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BusRouteMaxAggregateInputType = {
+    id?: true;
+    routeNumber?: true;
+    name?: true;
+    duration?: true;
+    distance?: true;
+    numStops?: true;
+    color?: true;
+    textColor?: true;
+    type?: true;
+    ineId?: true;
+    lineIdReturn?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BusRouteCountAggregateInputType = {
+    id?: true;
+    routeNumber?: true;
+    name?: true;
+    schedule?: true;
+    fare?: true;
+    duration?: true;
+    distance?: true;
+    numStops?: true;
+    color?: true;
+    textColor?: true;
+    type?: true;
+    ineId?: true;
+    lineIdReturn?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type BusRouteAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusRoute to aggregate.
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusRoutes to fetch.
+     */
+    orderBy?: Prisma.BusRouteOrderByWithRelationInput | Prisma.BusRouteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.BusRouteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusRoutes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusRoutes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned BusRoutes
+    **/
+    _count?: true | BusRouteCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: BusRouteAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: BusRouteSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: BusRouteMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: BusRouteMaxAggregateInputType;
+};
+export type GetBusRouteAggregateType<T extends BusRouteAggregateArgs> = {
+    [P in keyof T & keyof AggregateBusRoute]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateBusRoute[P]> : Prisma.GetScalarType<T[P], AggregateBusRoute[P]>;
+};
+export type BusRouteGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.BusRouteWhereInput;
+    orderBy?: Prisma.BusRouteOrderByWithAggregationInput | Prisma.BusRouteOrderByWithAggregationInput[];
+    by: Prisma.BusRouteScalarFieldEnum[] | Prisma.BusRouteScalarFieldEnum;
+    having?: Prisma.BusRouteScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: BusRouteCountAggregateInputType | true;
+    _avg?: BusRouteAvgAggregateInputType;
+    _sum?: BusRouteSumAggregateInputType;
+    _min?: BusRouteMinAggregateInputType;
+    _max?: BusRouteMaxAggregateInputType;
+};
+export type BusRouteGroupByOutputType = {
+    id: number;
+    routeNumber: string;
+    name: string;
+    schedule: runtime.JsonValue;
+    fare: runtime.JsonValue;
+    duration: number;
+    distance: number;
+    numStops: number;
+    color: string;
+    textColor: string;
+    type: string;
+    ineId: string | null;
+    lineIdReturn: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: BusRouteCountAggregateOutputType | null;
+    _avg: BusRouteAvgAggregateOutputType | null;
+    _sum: BusRouteSumAggregateOutputType | null;
+    _min: BusRouteMinAggregateOutputType | null;
+    _max: BusRouteMaxAggregateOutputType | null;
+};
+export type GetBusRouteGroupByPayload<T extends BusRouteGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<BusRouteGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof BusRouteGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], BusRouteGroupByOutputType[P]> : Prisma.GetScalarType<T[P], BusRouteGroupByOutputType[P]>;
+}>>;
+export type BusRouteWhereInput = {
+    AND?: Prisma.BusRouteWhereInput | Prisma.BusRouteWhereInput[];
+    OR?: Prisma.BusRouteWhereInput[];
+    NOT?: Prisma.BusRouteWhereInput | Prisma.BusRouteWhereInput[];
+    id?: Prisma.IntFilter<"BusRoute"> | number;
+    routeNumber?: Prisma.StringFilter<"BusRoute"> | string;
+    name?: Prisma.StringFilter<"BusRoute"> | string;
+    schedule?: Prisma.JsonFilter<"BusRoute">;
+    fare?: Prisma.JsonFilter<"BusRoute">;
+    duration?: Prisma.FloatFilter<"BusRoute"> | number;
+    distance?: Prisma.FloatFilter<"BusRoute"> | number;
+    numStops?: Prisma.IntFilter<"BusRoute"> | number;
+    color?: Prisma.StringFilter<"BusRoute"> | string;
+    textColor?: Prisma.StringFilter<"BusRoute"> | string;
+    type?: Prisma.StringFilter<"BusRoute"> | string;
+    ineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    lineIdReturn?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
+    stops?: Prisma.RouteStopListRelationFilter;
+};
+export type BusRouteOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    routeNumber?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    schedule?: Prisma.SortOrder;
+    fare?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+    color?: Prisma.SortOrder;
+    textColor?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    ineId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    lineIdReturn?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    stops?: Prisma.RouteStopOrderByRelationAggregateInput;
+};
+export type BusRouteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    routeNumber?: string;
+    AND?: Prisma.BusRouteWhereInput | Prisma.BusRouteWhereInput[];
+    OR?: Prisma.BusRouteWhereInput[];
+    NOT?: Prisma.BusRouteWhereInput | Prisma.BusRouteWhereInput[];
+    name?: Prisma.StringFilter<"BusRoute"> | string;
+    schedule?: Prisma.JsonFilter<"BusRoute">;
+    fare?: Prisma.JsonFilter<"BusRoute">;
+    duration?: Prisma.FloatFilter<"BusRoute"> | number;
+    distance?: Prisma.FloatFilter<"BusRoute"> | number;
+    numStops?: Prisma.IntFilter<"BusRoute"> | number;
+    color?: Prisma.StringFilter<"BusRoute"> | string;
+    textColor?: Prisma.StringFilter<"BusRoute"> | string;
+    type?: Prisma.StringFilter<"BusRoute"> | string;
+    ineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    lineIdReturn?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
+    stops?: Prisma.RouteStopListRelationFilter;
+}, "id" | "routeNumber">;
+export type BusRouteOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    routeNumber?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    schedule?: Prisma.SortOrder;
+    fare?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+    color?: Prisma.SortOrder;
+    textColor?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    ineId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    lineIdReturn?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.BusRouteCountOrderByAggregateInput;
+    _avg?: Prisma.BusRouteAvgOrderByAggregateInput;
+    _max?: Prisma.BusRouteMaxOrderByAggregateInput;
+    _min?: Prisma.BusRouteMinOrderByAggregateInput;
+    _sum?: Prisma.BusRouteSumOrderByAggregateInput;
+};
+export type BusRouteScalarWhereWithAggregatesInput = {
+    AND?: Prisma.BusRouteScalarWhereWithAggregatesInput | Prisma.BusRouteScalarWhereWithAggregatesInput[];
+    OR?: Prisma.BusRouteScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.BusRouteScalarWhereWithAggregatesInput | Prisma.BusRouteScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"BusRoute"> | number;
+    routeNumber?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
+    name?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
+    schedule?: Prisma.JsonWithAggregatesFilter<"BusRoute">;
+    fare?: Prisma.JsonWithAggregatesFilter<"BusRoute">;
+    duration?: Prisma.FloatWithAggregatesFilter<"BusRoute"> | number;
+    distance?: Prisma.FloatWithAggregatesFilter<"BusRoute"> | number;
+    numStops?: Prisma.IntWithAggregatesFilter<"BusRoute"> | number;
+    color?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
+    textColor?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
+    type?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
+    ineId?: Prisma.StringNullableWithAggregatesFilter<"BusRoute"> | string | null;
+    lineIdReturn?: Prisma.StringNullableWithAggregatesFilter<"BusRoute"> | string | null;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"BusRoute"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BusRoute"> | Date | string;
+};
+export type BusRouteCreateInput = {
+    routeNumber: string;
+    name: string;
+    schedule: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: number;
+    distance?: number;
+    numStops?: number;
+    color?: string;
+    textColor?: string;
+    type?: string;
+    ineId?: string | null;
+    lineIdReturn?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    stops?: Prisma.RouteStopCreateNestedManyWithoutRouteInput;
+};
+export type BusRouteUncheckedCreateInput = {
+    id?: number;
+    routeNumber: string;
+    name: string;
+    schedule: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: number;
+    distance?: number;
+    numStops?: number;
+    color?: string;
+    textColor?: string;
+    type?: string;
+    ineId?: string | null;
+    lineIdReturn?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    stops?: Prisma.RouteStopUncheckedCreateNestedManyWithoutRouteInput;
+};
+export type BusRouteUpdateInput = {
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    stops?: Prisma.RouteStopUpdateManyWithoutRouteNestedInput;
+};
+export type BusRouteUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    stops?: Prisma.RouteStopUncheckedUpdateManyWithoutRouteNestedInput;
+};
+export type BusRouteCreateManyInput = {
+    id?: number;
+    routeNumber: string;
+    name: string;
+    schedule: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: number;
+    distance?: number;
+    numStops?: number;
+    color?: string;
+    textColor?: string;
+    type?: string;
+    ineId?: string | null;
+    lineIdReturn?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusRouteUpdateManyMutationInput = {
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusRouteUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusRouteCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    routeNumber?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    schedule?: Prisma.SortOrder;
+    fare?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+    color?: Prisma.SortOrder;
+    textColor?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    ineId?: Prisma.SortOrder;
+    lineIdReturn?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusRouteAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+};
+export type BusRouteMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    routeNumber?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+    color?: Prisma.SortOrder;
+    textColor?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    ineId?: Prisma.SortOrder;
+    lineIdReturn?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusRouteMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    routeNumber?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+    color?: Prisma.SortOrder;
+    textColor?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    ineId?: Prisma.SortOrder;
+    lineIdReturn?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusRouteSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    duration?: Prisma.SortOrder;
+    distance?: Prisma.SortOrder;
+    numStops?: Prisma.SortOrder;
+};
+export type BusRouteScalarRelationFilter = {
+    is?: Prisma.BusRouteWhereInput;
+    isNot?: Prisma.BusRouteWhereInput;
+};
+export type BusRouteCreateNestedOneWithoutStopsInput = {
+    create?: Prisma.XOR<Prisma.BusRouteCreateWithoutStopsInput, Prisma.BusRouteUncheckedCreateWithoutStopsInput>;
+    connectOrCreate?: Prisma.BusRouteCreateOrConnectWithoutStopsInput;
+    connect?: Prisma.BusRouteWhereUniqueInput;
+};
+export type BusRouteUpdateOneRequiredWithoutStopsNestedInput = {
+    create?: Prisma.XOR<Prisma.BusRouteCreateWithoutStopsInput, Prisma.BusRouteUncheckedCreateWithoutStopsInput>;
+    connectOrCreate?: Prisma.BusRouteCreateOrConnectWithoutStopsInput;
+    upsert?: Prisma.BusRouteUpsertWithoutStopsInput;
+    connect?: Prisma.BusRouteWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.BusRouteUpdateToOneWithWhereWithoutStopsInput, Prisma.BusRouteUpdateWithoutStopsInput>, Prisma.BusRouteUncheckedUpdateWithoutStopsInput>;
+};
+export type BusRouteCreateWithoutStopsInput = {
+    routeNumber: string;
+    name: string;
+    schedule: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: number;
+    distance?: number;
+    numStops?: number;
+    color?: string;
+    textColor?: string;
+    type?: string;
+    ineId?: string | null;
+    lineIdReturn?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusRouteUncheckedCreateWithoutStopsInput = {
+    id?: number;
+    routeNumber: string;
+    name: string;
+    schedule: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: number;
+    distance?: number;
+    numStops?: number;
+    color?: string;
+    textColor?: string;
+    type?: string;
+    ineId?: string | null;
+    lineIdReturn?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusRouteCreateOrConnectWithoutStopsInput = {
+    where: Prisma.BusRouteWhereUniqueInput;
+    create: Prisma.XOR<Prisma.BusRouteCreateWithoutStopsInput, Prisma.BusRouteUncheckedCreateWithoutStopsInput>;
+};
+export type BusRouteUpsertWithoutStopsInput = {
+    update: Prisma.XOR<Prisma.BusRouteUpdateWithoutStopsInput, Prisma.BusRouteUncheckedUpdateWithoutStopsInput>;
+    create: Prisma.XOR<Prisma.BusRouteCreateWithoutStopsInput, Prisma.BusRouteUncheckedCreateWithoutStopsInput>;
+    where?: Prisma.BusRouteWhereInput;
+};
+export type BusRouteUpdateToOneWithWhereWithoutStopsInput = {
+    where?: Prisma.BusRouteWhereInput;
+    data: Prisma.XOR<Prisma.BusRouteUpdateWithoutStopsInput, Prisma.BusRouteUncheckedUpdateWithoutStopsInput>;
+};
+export type BusRouteUpdateWithoutStopsInput = {
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusRouteUncheckedUpdateWithoutStopsInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    routeNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    schedule?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    fare?: Prisma.JsonNullValueInput | runtime.InputJsonValue;
+    duration?: Prisma.FloatFieldUpdateOperationsInput | number;
+    distance?: Prisma.FloatFieldUpdateOperationsInput | number;
+    numStops?: Prisma.IntFieldUpdateOperationsInput | number;
+    color?: Prisma.StringFieldUpdateOperationsInput | string;
+    textColor?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.StringFieldUpdateOperationsInput | string;
+    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+/**
+ * Count Type BusRouteCountOutputType
+ */
+export type BusRouteCountOutputType = {
+    stops: number;
+};
+export type BusRouteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    stops?: boolean | BusRouteCountOutputTypeCountStopsArgs;
+};
+/**
+ * BusRouteCountOutputType without action
+ */
+export type BusRouteCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRouteCountOutputType
+     */
+    select?: Prisma.BusRouteCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * BusRouteCountOutputType without action
+ */
+export type BusRouteCountOutputTypeCountStopsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RouteStopWhereInput;
+};
+export type BusRouteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    routeNumber?: boolean;
+    name?: boolean;
+    schedule?: boolean;
+    fare?: boolean;
+    duration?: boolean;
+    distance?: boolean;
+    numStops?: boolean;
+    color?: boolean;
+    textColor?: boolean;
+    type?: boolean;
+    ineId?: boolean;
+    lineIdReturn?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    stops?: boolean | Prisma.BusRoute$stopsArgs<ExtArgs>;
+    _count?: boolean | Prisma.BusRouteCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["busRoute"]>;
+export type BusRouteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    routeNumber?: boolean;
+    name?: boolean;
+    schedule?: boolean;
+    fare?: boolean;
+    duration?: boolean;
+    distance?: boolean;
+    numStops?: boolean;
+    color?: boolean;
+    textColor?: boolean;
+    type?: boolean;
+    ineId?: boolean;
+    lineIdReturn?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["busRoute"]>;
+export type BusRouteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    routeNumber?: boolean;
+    name?: boolean;
+    schedule?: boolean;
+    fare?: boolean;
+    duration?: boolean;
+    distance?: boolean;
+    numStops?: boolean;
+    color?: boolean;
+    textColor?: boolean;
+    type?: boolean;
+    ineId?: boolean;
+    lineIdReturn?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["busRoute"]>;
+export type BusRouteSelectScalar = {
+    id?: boolean;
+    routeNumber?: boolean;
+    name?: boolean;
+    schedule?: boolean;
+    fare?: boolean;
+    duration?: boolean;
+    distance?: boolean;
+    numStops?: boolean;
+    color?: boolean;
+    textColor?: boolean;
+    type?: boolean;
+    ineId?: boolean;
+    lineIdReturn?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type BusRouteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "routeNumber" | "name" | "schedule" | "fare" | "duration" | "distance" | "numStops" | "color" | "textColor" | "type" | "ineId" | "lineIdReturn" | "createdAt" | "updatedAt", ExtArgs["result"]["busRoute"]>;
+export type BusRouteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    stops?: boolean | Prisma.BusRoute$stopsArgs<ExtArgs>;
+    _count?: boolean | Prisma.BusRouteCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type BusRouteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type BusRouteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type $BusRoutePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "BusRoute";
+    objects: {
+        stops: Prisma.$RouteStopPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        routeNumber: string;
+        name: string;
+        schedule: runtime.JsonValue;
+        fare: runtime.JsonValue;
+        duration: number;
+        distance: number;
+        numStops: number;
+        color: string;
+        textColor: string;
+        type: string;
+        ineId: string | null;
+        lineIdReturn: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["busRoute"]>;
+    composites: {};
+};
+export type BusRouteGetPayload<S extends boolean | null | undefined | BusRouteDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$BusRoutePayload, S>;
+export type BusRouteCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<BusRouteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: BusRouteCountAggregateInputType | true;
+};
+export interface BusRouteDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['BusRoute'];
+        meta: {
+            name: 'BusRoute';
+        };
+    };
+    /**
+     * Find zero or one BusRoute that matches the filter.
+     * @param {BusRouteFindUniqueArgs} args - Arguments to find a BusRoute
+     * @example
+     * // Get one BusRoute
+     * const busRoute = await prisma.busRoute.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BusRouteFindUniqueArgs>(args: Prisma.SelectSubset<T, BusRouteFindUniqueArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one BusRoute that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BusRouteFindUniqueOrThrowArgs} args - Arguments to find a BusRoute
+     * @example
+     * // Get one BusRoute
+     * const busRoute = await prisma.busRoute.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BusRouteFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, BusRouteFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BusRoute that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteFindFirstArgs} args - Arguments to find a BusRoute
+     * @example
+     * // Get one BusRoute
+     * const busRoute = await prisma.busRoute.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BusRouteFindFirstArgs>(args?: Prisma.SelectSubset<T, BusRouteFindFirstArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BusRoute that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteFindFirstOrThrowArgs} args - Arguments to find a BusRoute
+     * @example
+     * // Get one BusRoute
+     * const busRoute = await prisma.busRoute.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BusRouteFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, BusRouteFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more BusRoutes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BusRoutes
+     * const busRoutes = await prisma.busRoute.findMany()
+     *
+     * // Get first 10 BusRoutes
+     * const busRoutes = await prisma.busRoute.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const busRouteWithIdOnly = await prisma.busRoute.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends BusRouteFindManyArgs>(args?: Prisma.SelectSubset<T, BusRouteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a BusRoute.
+     * @param {BusRouteCreateArgs} args - Arguments to create a BusRoute.
+     * @example
+     * // Create one BusRoute
+     * const BusRoute = await prisma.busRoute.create({
+     *   data: {
+     *     // ... data to create a BusRoute
+     *   }
+     * })
+     *
+     */
+    create<T extends BusRouteCreateArgs>(args: Prisma.SelectSubset<T, BusRouteCreateArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many BusRoutes.
+     * @param {BusRouteCreateManyArgs} args - Arguments to create many BusRoutes.
+     * @example
+     * // Create many BusRoutes
+     * const busRoute = await prisma.busRoute.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends BusRouteCreateManyArgs>(args?: Prisma.SelectSubset<T, BusRouteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many BusRoutes and returns the data saved in the database.
+     * @param {BusRouteCreateManyAndReturnArgs} args - Arguments to create many BusRoutes.
+     * @example
+     * // Create many BusRoutes
+     * const busRoute = await prisma.busRoute.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many BusRoutes and only return the `id`
+     * const busRouteWithIdOnly = await prisma.busRoute.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends BusRouteCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, BusRouteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a BusRoute.
+     * @param {BusRouteDeleteArgs} args - Arguments to delete one BusRoute.
+     * @example
+     * // Delete one BusRoute
+     * const BusRoute = await prisma.busRoute.delete({
+     *   where: {
+     *     // ... filter to delete one BusRoute
+     *   }
+     * })
+     *
+     */
+    delete<T extends BusRouteDeleteArgs>(args: Prisma.SelectSubset<T, BusRouteDeleteArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one BusRoute.
+     * @param {BusRouteUpdateArgs} args - Arguments to update one BusRoute.
+     * @example
+     * // Update one BusRoute
+     * const busRoute = await prisma.busRoute.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends BusRouteUpdateArgs>(args: Prisma.SelectSubset<T, BusRouteUpdateArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more BusRoutes.
+     * @param {BusRouteDeleteManyArgs} args - Arguments to filter BusRoutes to delete.
+     * @example
+     * // Delete a few BusRoutes
+     * const { count } = await prisma.busRoute.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends BusRouteDeleteManyArgs>(args?: Prisma.SelectSubset<T, BusRouteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more BusRoutes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BusRoutes
+     * const busRoute = await prisma.busRoute.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends BusRouteUpdateManyArgs>(args: Prisma.SelectSubset<T, BusRouteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more BusRoutes and returns the data updated in the database.
+     * @param {BusRouteUpdateManyAndReturnArgs} args - Arguments to update many BusRoutes.
+     * @example
+     * // Update many BusRoutes
+     * const busRoute = await prisma.busRoute.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more BusRoutes and only return the `id`
+     * const busRouteWithIdOnly = await prisma.busRoute.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends BusRouteUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, BusRouteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one BusRoute.
+     * @param {BusRouteUpsertArgs} args - Arguments to update or create a BusRoute.
+     * @example
+     * // Update or create a BusRoute
+     * const busRoute = await prisma.busRoute.upsert({
+     *   create: {
+     *     // ... data to create a BusRoute
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BusRoute we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BusRouteUpsertArgs>(args: Prisma.SelectSubset<T, BusRouteUpsertArgs<ExtArgs>>): Prisma.Prisma__BusRouteClient<runtime.Types.Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of BusRoutes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteCountArgs} args - Arguments to filter BusRoutes to count.
+     * @example
+     * // Count the number of BusRoutes
+     * const count = await prisma.busRoute.count({
+     *   where: {
+     *     // ... the filter for the BusRoutes we want to count
+     *   }
+     * })
+    **/
+    count<T extends BusRouteCountArgs>(args?: Prisma.Subset<T, BusRouteCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], BusRouteCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a BusRoute.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BusRouteAggregateArgs>(args: Prisma.Subset<T, BusRouteAggregateArgs>): Prisma.PrismaPromise<GetBusRouteAggregateType<T>>;
+    /**
+     * Group by BusRoute.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusRouteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends BusRouteGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: BusRouteGroupByArgs['orderBy'];
+    } : {
+        orderBy?: BusRouteGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, BusRouteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBusRouteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the BusRoute model
+     */
+    readonly fields: BusRouteFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for BusRoute.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__BusRouteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    stops<T extends Prisma.BusRoute$stopsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BusRoute$stopsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RouteStopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the BusRoute model
+ */
+export interface BusRouteFieldRefs {
+    readonly id: Prisma.FieldRef<"BusRoute", 'Int'>;
+    readonly routeNumber: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly name: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly schedule: Prisma.FieldRef<"BusRoute", 'Json'>;
+    readonly fare: Prisma.FieldRef<"BusRoute", 'Json'>;
+    readonly duration: Prisma.FieldRef<"BusRoute", 'Float'>;
+    readonly distance: Prisma.FieldRef<"BusRoute", 'Float'>;
+    readonly numStops: Prisma.FieldRef<"BusRoute", 'Int'>;
+    readonly color: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly textColor: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly type: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly ineId: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly lineIdReturn: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"BusRoute", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"BusRoute", 'DateTime'>;
+}
+/**
+ * BusRoute findUnique
+ */
+export type BusRouteFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter, which BusRoute to fetch.
+     */
+    where: Prisma.BusRouteWhereUniqueInput;
+};
+/**
+ * BusRoute findUniqueOrThrow
+ */
+export type BusRouteFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter, which BusRoute to fetch.
+     */
+    where: Prisma.BusRouteWhereUniqueInput;
+};
+/**
+ * BusRoute findFirst
+ */
+export type BusRouteFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter, which BusRoute to fetch.
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusRoutes to fetch.
+     */
+    orderBy?: Prisma.BusRouteOrderByWithRelationInput | Prisma.BusRouteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BusRoutes.
+     */
+    cursor?: Prisma.BusRouteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusRoutes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusRoutes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusRoutes.
+     */
+    distinct?: Prisma.BusRouteScalarFieldEnum | Prisma.BusRouteScalarFieldEnum[];
+};
+/**
+ * BusRoute findFirstOrThrow
+ */
+export type BusRouteFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter, which BusRoute to fetch.
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusRoutes to fetch.
+     */
+    orderBy?: Prisma.BusRouteOrderByWithRelationInput | Prisma.BusRouteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BusRoutes.
+     */
+    cursor?: Prisma.BusRouteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusRoutes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusRoutes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusRoutes.
+     */
+    distinct?: Prisma.BusRouteScalarFieldEnum | Prisma.BusRouteScalarFieldEnum[];
+};
+/**
+ * BusRoute findMany
+ */
+export type BusRouteFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter, which BusRoutes to fetch.
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusRoutes to fetch.
+     */
+    orderBy?: Prisma.BusRouteOrderByWithRelationInput | Prisma.BusRouteOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing BusRoutes.
+     */
+    cursor?: Prisma.BusRouteWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusRoutes from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusRoutes.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusRoutes.
+     */
+    distinct?: Prisma.BusRouteScalarFieldEnum | Prisma.BusRouteScalarFieldEnum[];
+};
+/**
+ * BusRoute create
+ */
+export type BusRouteCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a BusRoute.
+     */
+    data: Prisma.XOR<Prisma.BusRouteCreateInput, Prisma.BusRouteUncheckedCreateInput>;
+};
+/**
+ * BusRoute createMany
+ */
+export type BusRouteCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BusRoutes.
+     */
+    data: Prisma.BusRouteCreateManyInput | Prisma.BusRouteCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * BusRoute createManyAndReturn
+ */
+export type BusRouteCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * The data used to create many BusRoutes.
+     */
+    data: Prisma.BusRouteCreateManyInput | Prisma.BusRouteCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * BusRoute update
+ */
+export type BusRouteUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a BusRoute.
+     */
+    data: Prisma.XOR<Prisma.BusRouteUpdateInput, Prisma.BusRouteUncheckedUpdateInput>;
+    /**
+     * Choose, which BusRoute to update.
+     */
+    where: Prisma.BusRouteWhereUniqueInput;
+};
+/**
+ * BusRoute updateMany
+ */
+export type BusRouteUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BusRoutes.
+     */
+    data: Prisma.XOR<Prisma.BusRouteUpdateManyMutationInput, Prisma.BusRouteUncheckedUpdateManyInput>;
+    /**
+     * Filter which BusRoutes to update
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * Limit how many BusRoutes to update.
+     */
+    limit?: number;
+};
+/**
+ * BusRoute updateManyAndReturn
+ */
+export type BusRouteUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * The data used to update BusRoutes.
+     */
+    data: Prisma.XOR<Prisma.BusRouteUpdateManyMutationInput, Prisma.BusRouteUncheckedUpdateManyInput>;
+    /**
+     * Filter which BusRoutes to update
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * Limit how many BusRoutes to update.
+     */
+    limit?: number;
+};
+/**
+ * BusRoute upsert
+ */
+export type BusRouteUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the BusRoute to update in case it exists.
+     */
+    where: Prisma.BusRouteWhereUniqueInput;
+    /**
+     * In case the BusRoute found by the `where` argument doesn't exist, create a new BusRoute with this data.
+     */
+    create: Prisma.XOR<Prisma.BusRouteCreateInput, Prisma.BusRouteUncheckedCreateInput>;
+    /**
+     * In case the BusRoute was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.BusRouteUpdateInput, Prisma.BusRouteUncheckedUpdateInput>;
+};
+/**
+ * BusRoute delete
+ */
+export type BusRouteDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+    /**
+     * Filter which BusRoute to delete.
+     */
+    where: Prisma.BusRouteWhereUniqueInput;
+};
+/**
+ * BusRoute deleteMany
+ */
+export type BusRouteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusRoutes to delete
+     */
+    where?: Prisma.BusRouteWhereInput;
+    /**
+     * Limit how many BusRoutes to delete.
+     */
+    limit?: number;
+};
+/**
+ * BusRoute.stops
+ */
+export type BusRoute$stopsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RouteStop
+     */
+    select?: Prisma.RouteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RouteStop
+     */
+    omit?: Prisma.RouteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RouteStopInclude<ExtArgs> | null;
+    where?: Prisma.RouteStopWhereInput;
+    orderBy?: Prisma.RouteStopOrderByWithRelationInput | Prisma.RouteStopOrderByWithRelationInput[];
+    cursor?: Prisma.RouteStopWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RouteStopScalarFieldEnum | Prisma.RouteStopScalarFieldEnum[];
+};
+/**
+ * BusRoute without action
+ */
+export type BusRouteDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusRoute
+     */
+    select?: Prisma.BusRouteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusRoute
+     */
+    omit?: Prisma.BusRouteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.BusRouteInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=BusRoute.d.ts.map

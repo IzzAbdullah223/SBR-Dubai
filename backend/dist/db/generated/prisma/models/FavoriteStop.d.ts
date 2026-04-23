@@ -1,0 +1,1297 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model FavoriteStop
+ *
+ */
+export type FavoriteStopModel = runtime.Types.Result.DefaultSelection<Prisma.$FavoriteStopPayload>;
+export type AggregateFavoriteStop = {
+    _count: FavoriteStopCountAggregateOutputType | null;
+    _avg: FavoriteStopAvgAggregateOutputType | null;
+    _sum: FavoriteStopSumAggregateOutputType | null;
+    _min: FavoriteStopMinAggregateOutputType | null;
+    _max: FavoriteStopMaxAggregateOutputType | null;
+};
+export type FavoriteStopAvgAggregateOutputType = {
+    id: number | null;
+    lat: number | null;
+    lng: number | null;
+    userId: number | null;
+};
+export type FavoriteStopSumAggregateOutputType = {
+    id: number | null;
+    lat: number | null;
+    lng: number | null;
+    userId: number | null;
+};
+export type FavoriteStopMinAggregateOutputType = {
+    id: number | null;
+    stopId: string | null;
+    name: string | null;
+    lat: number | null;
+    lng: number | null;
+    savedAt: Date | null;
+    userId: number | null;
+};
+export type FavoriteStopMaxAggregateOutputType = {
+    id: number | null;
+    stopId: string | null;
+    name: string | null;
+    lat: number | null;
+    lng: number | null;
+    savedAt: Date | null;
+    userId: number | null;
+};
+export type FavoriteStopCountAggregateOutputType = {
+    id: number;
+    stopId: number;
+    name: number;
+    lat: number;
+    lng: number;
+    savedAt: number;
+    userId: number;
+    _all: number;
+};
+export type FavoriteStopAvgAggregateInputType = {
+    id?: true;
+    lat?: true;
+    lng?: true;
+    userId?: true;
+};
+export type FavoriteStopSumAggregateInputType = {
+    id?: true;
+    lat?: true;
+    lng?: true;
+    userId?: true;
+};
+export type FavoriteStopMinAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    savedAt?: true;
+    userId?: true;
+};
+export type FavoriteStopMaxAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    savedAt?: true;
+    userId?: true;
+};
+export type FavoriteStopCountAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    savedAt?: true;
+    userId?: true;
+    _all?: true;
+};
+export type FavoriteStopAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which FavoriteStop to aggregate.
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of FavoriteStops to fetch.
+     */
+    orderBy?: Prisma.FavoriteStopOrderByWithRelationInput | Prisma.FavoriteStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.FavoriteStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` FavoriteStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` FavoriteStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned FavoriteStops
+    **/
+    _count?: true | FavoriteStopCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: FavoriteStopAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: FavoriteStopSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: FavoriteStopMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: FavoriteStopMaxAggregateInputType;
+};
+export type GetFavoriteStopAggregateType<T extends FavoriteStopAggregateArgs> = {
+    [P in keyof T & keyof AggregateFavoriteStop]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateFavoriteStop[P]> : Prisma.GetScalarType<T[P], AggregateFavoriteStop[P]>;
+};
+export type FavoriteStopGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.FavoriteStopWhereInput;
+    orderBy?: Prisma.FavoriteStopOrderByWithAggregationInput | Prisma.FavoriteStopOrderByWithAggregationInput[];
+    by: Prisma.FavoriteStopScalarFieldEnum[] | Prisma.FavoriteStopScalarFieldEnum;
+    having?: Prisma.FavoriteStopScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: FavoriteStopCountAggregateInputType | true;
+    _avg?: FavoriteStopAvgAggregateInputType;
+    _sum?: FavoriteStopSumAggregateInputType;
+    _min?: FavoriteStopMinAggregateInputType;
+    _max?: FavoriteStopMaxAggregateInputType;
+};
+export type FavoriteStopGroupByOutputType = {
+    id: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt: Date;
+    userId: number;
+    _count: FavoriteStopCountAggregateOutputType | null;
+    _avg: FavoriteStopAvgAggregateOutputType | null;
+    _sum: FavoriteStopSumAggregateOutputType | null;
+    _min: FavoriteStopMinAggregateOutputType | null;
+    _max: FavoriteStopMaxAggregateOutputType | null;
+};
+export type GetFavoriteStopGroupByPayload<T extends FavoriteStopGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<FavoriteStopGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof FavoriteStopGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], FavoriteStopGroupByOutputType[P]> : Prisma.GetScalarType<T[P], FavoriteStopGroupByOutputType[P]>;
+}>>;
+export type FavoriteStopWhereInput = {
+    AND?: Prisma.FavoriteStopWhereInput | Prisma.FavoriteStopWhereInput[];
+    OR?: Prisma.FavoriteStopWhereInput[];
+    NOT?: Prisma.FavoriteStopWhereInput | Prisma.FavoriteStopWhereInput[];
+    id?: Prisma.IntFilter<"FavoriteStop"> | number;
+    stopId?: Prisma.StringFilter<"FavoriteStop"> | string;
+    name?: Prisma.StringFilter<"FavoriteStop"> | string;
+    lat?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    lng?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    savedAt?: Prisma.DateTimeFilter<"FavoriteStop"> | Date | string;
+    userId?: Prisma.IntFilter<"FavoriteStop"> | number;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+};
+export type FavoriteStopOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    savedAt?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    user?: Prisma.UserOrderByWithRelationInput;
+};
+export type FavoriteStopWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    AND?: Prisma.FavoriteStopWhereInput | Prisma.FavoriteStopWhereInput[];
+    OR?: Prisma.FavoriteStopWhereInput[];
+    NOT?: Prisma.FavoriteStopWhereInput | Prisma.FavoriteStopWhereInput[];
+    stopId?: Prisma.StringFilter<"FavoriteStop"> | string;
+    name?: Prisma.StringFilter<"FavoriteStop"> | string;
+    lat?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    lng?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    savedAt?: Prisma.DateTimeFilter<"FavoriteStop"> | Date | string;
+    userId?: Prisma.IntFilter<"FavoriteStop"> | number;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+}, "id">;
+export type FavoriteStopOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    savedAt?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    _count?: Prisma.FavoriteStopCountOrderByAggregateInput;
+    _avg?: Prisma.FavoriteStopAvgOrderByAggregateInput;
+    _max?: Prisma.FavoriteStopMaxOrderByAggregateInput;
+    _min?: Prisma.FavoriteStopMinOrderByAggregateInput;
+    _sum?: Prisma.FavoriteStopSumOrderByAggregateInput;
+};
+export type FavoriteStopScalarWhereWithAggregatesInput = {
+    AND?: Prisma.FavoriteStopScalarWhereWithAggregatesInput | Prisma.FavoriteStopScalarWhereWithAggregatesInput[];
+    OR?: Prisma.FavoriteStopScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.FavoriteStopScalarWhereWithAggregatesInput | Prisma.FavoriteStopScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"FavoriteStop"> | number;
+    stopId?: Prisma.StringWithAggregatesFilter<"FavoriteStop"> | string;
+    name?: Prisma.StringWithAggregatesFilter<"FavoriteStop"> | string;
+    lat?: Prisma.FloatWithAggregatesFilter<"FavoriteStop"> | number;
+    lng?: Prisma.FloatWithAggregatesFilter<"FavoriteStop"> | number;
+    savedAt?: Prisma.DateTimeWithAggregatesFilter<"FavoriteStop"> | Date | string;
+    userId?: Prisma.IntWithAggregatesFilter<"FavoriteStop"> | number;
+};
+export type FavoriteStopCreateInput = {
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutFavoriteStopsInput;
+};
+export type FavoriteStopUncheckedCreateInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+    userId: number;
+};
+export type FavoriteStopUpdateInput = {
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutFavoriteStopsNestedInput;
+};
+export type FavoriteStopUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    userId?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type FavoriteStopCreateManyInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+    userId: number;
+};
+export type FavoriteStopUpdateManyMutationInput = {
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type FavoriteStopUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    userId?: Prisma.IntFieldUpdateOperationsInput | number;
+};
+export type FavoriteStopListRelationFilter = {
+    every?: Prisma.FavoriteStopWhereInput;
+    some?: Prisma.FavoriteStopWhereInput;
+    none?: Prisma.FavoriteStopWhereInput;
+};
+export type FavoriteStopOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type FavoriteStopCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    savedAt?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type FavoriteStopAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type FavoriteStopMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    savedAt?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type FavoriteStopMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    savedAt?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type FavoriteStopSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type FavoriteStopCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput> | Prisma.FavoriteStopCreateWithoutUserInput[] | Prisma.FavoriteStopUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.FavoriteStopCreateOrConnectWithoutUserInput | Prisma.FavoriteStopCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.FavoriteStopCreateManyUserInputEnvelope;
+    connect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+};
+export type FavoriteStopUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput> | Prisma.FavoriteStopCreateWithoutUserInput[] | Prisma.FavoriteStopUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.FavoriteStopCreateOrConnectWithoutUserInput | Prisma.FavoriteStopCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.FavoriteStopCreateManyUserInputEnvelope;
+    connect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+};
+export type FavoriteStopUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput> | Prisma.FavoriteStopCreateWithoutUserInput[] | Prisma.FavoriteStopUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.FavoriteStopCreateOrConnectWithoutUserInput | Prisma.FavoriteStopCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.FavoriteStopUpsertWithWhereUniqueWithoutUserInput | Prisma.FavoriteStopUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.FavoriteStopCreateManyUserInputEnvelope;
+    set?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    disconnect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    delete?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    connect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    update?: Prisma.FavoriteStopUpdateWithWhereUniqueWithoutUserInput | Prisma.FavoriteStopUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.FavoriteStopUpdateManyWithWhereWithoutUserInput | Prisma.FavoriteStopUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.FavoriteStopScalarWhereInput | Prisma.FavoriteStopScalarWhereInput[];
+};
+export type FavoriteStopUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput> | Prisma.FavoriteStopCreateWithoutUserInput[] | Prisma.FavoriteStopUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.FavoriteStopCreateOrConnectWithoutUserInput | Prisma.FavoriteStopCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.FavoriteStopUpsertWithWhereUniqueWithoutUserInput | Prisma.FavoriteStopUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.FavoriteStopCreateManyUserInputEnvelope;
+    set?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    disconnect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    delete?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    connect?: Prisma.FavoriteStopWhereUniqueInput | Prisma.FavoriteStopWhereUniqueInput[];
+    update?: Prisma.FavoriteStopUpdateWithWhereUniqueWithoutUserInput | Prisma.FavoriteStopUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.FavoriteStopUpdateManyWithWhereWithoutUserInput | Prisma.FavoriteStopUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.FavoriteStopScalarWhereInput | Prisma.FavoriteStopScalarWhereInput[];
+};
+export type FavoriteStopCreateWithoutUserInput = {
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+};
+export type FavoriteStopUncheckedCreateWithoutUserInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+};
+export type FavoriteStopCreateOrConnectWithoutUserInput = {
+    where: Prisma.FavoriteStopWhereUniqueInput;
+    create: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput>;
+};
+export type FavoriteStopCreateManyUserInputEnvelope = {
+    data: Prisma.FavoriteStopCreateManyUserInput | Prisma.FavoriteStopCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type FavoriteStopUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.FavoriteStopWhereUniqueInput;
+    update: Prisma.XOR<Prisma.FavoriteStopUpdateWithoutUserInput, Prisma.FavoriteStopUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.FavoriteStopCreateWithoutUserInput, Prisma.FavoriteStopUncheckedCreateWithoutUserInput>;
+};
+export type FavoriteStopUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.FavoriteStopWhereUniqueInput;
+    data: Prisma.XOR<Prisma.FavoriteStopUpdateWithoutUserInput, Prisma.FavoriteStopUncheckedUpdateWithoutUserInput>;
+};
+export type FavoriteStopUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.FavoriteStopScalarWhereInput;
+    data: Prisma.XOR<Prisma.FavoriteStopUpdateManyMutationInput, Prisma.FavoriteStopUncheckedUpdateManyWithoutUserInput>;
+};
+export type FavoriteStopScalarWhereInput = {
+    AND?: Prisma.FavoriteStopScalarWhereInput | Prisma.FavoriteStopScalarWhereInput[];
+    OR?: Prisma.FavoriteStopScalarWhereInput[];
+    NOT?: Prisma.FavoriteStopScalarWhereInput | Prisma.FavoriteStopScalarWhereInput[];
+    id?: Prisma.IntFilter<"FavoriteStop"> | number;
+    stopId?: Prisma.StringFilter<"FavoriteStop"> | string;
+    name?: Prisma.StringFilter<"FavoriteStop"> | string;
+    lat?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    lng?: Prisma.FloatFilter<"FavoriteStop"> | number;
+    savedAt?: Prisma.DateTimeFilter<"FavoriteStop"> | Date | string;
+    userId?: Prisma.IntFilter<"FavoriteStop"> | number;
+};
+export type FavoriteStopCreateManyUserInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    savedAt?: Date | string;
+};
+export type FavoriteStopUpdateWithoutUserInput = {
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type FavoriteStopUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type FavoriteStopUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    savedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type FavoriteStopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    savedAt?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["favoriteStop"]>;
+export type FavoriteStopSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    savedAt?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["favoriteStop"]>;
+export type FavoriteStopSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    savedAt?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["favoriteStop"]>;
+export type FavoriteStopSelectScalar = {
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    savedAt?: boolean;
+    userId?: boolean;
+};
+export type FavoriteStopOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "stopId" | "name" | "lat" | "lng" | "savedAt" | "userId", ExtArgs["result"]["favoriteStop"]>;
+export type FavoriteStopInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type FavoriteStopIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type FavoriteStopIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $FavoriteStopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "FavoriteStop";
+    objects: {
+        user: Prisma.$UserPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        stopId: string;
+        name: string;
+        lat: number;
+        lng: number;
+        savedAt: Date;
+        userId: number;
+    }, ExtArgs["result"]["favoriteStop"]>;
+    composites: {};
+};
+export type FavoriteStopGetPayload<S extends boolean | null | undefined | FavoriteStopDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload, S>;
+export type FavoriteStopCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<FavoriteStopFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: FavoriteStopCountAggregateInputType | true;
+};
+export interface FavoriteStopDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['FavoriteStop'];
+        meta: {
+            name: 'FavoriteStop';
+        };
+    };
+    /**
+     * Find zero or one FavoriteStop that matches the filter.
+     * @param {FavoriteStopFindUniqueArgs} args - Arguments to find a FavoriteStop
+     * @example
+     * // Get one FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FavoriteStopFindUniqueArgs>(args: Prisma.SelectSubset<T, FavoriteStopFindUniqueArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one FavoriteStop that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FavoriteStopFindUniqueOrThrowArgs} args - Arguments to find a FavoriteStop
+     * @example
+     * // Get one FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FavoriteStopFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, FavoriteStopFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first FavoriteStop that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopFindFirstArgs} args - Arguments to find a FavoriteStop
+     * @example
+     * // Get one FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FavoriteStopFindFirstArgs>(args?: Prisma.SelectSubset<T, FavoriteStopFindFirstArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first FavoriteStop that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopFindFirstOrThrowArgs} args - Arguments to find a FavoriteStop
+     * @example
+     * // Get one FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FavoriteStopFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, FavoriteStopFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more FavoriteStops that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FavoriteStops
+     * const favoriteStops = await prisma.favoriteStop.findMany()
+     *
+     * // Get first 10 FavoriteStops
+     * const favoriteStops = await prisma.favoriteStop.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const favoriteStopWithIdOnly = await prisma.favoriteStop.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends FavoriteStopFindManyArgs>(args?: Prisma.SelectSubset<T, FavoriteStopFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a FavoriteStop.
+     * @param {FavoriteStopCreateArgs} args - Arguments to create a FavoriteStop.
+     * @example
+     * // Create one FavoriteStop
+     * const FavoriteStop = await prisma.favoriteStop.create({
+     *   data: {
+     *     // ... data to create a FavoriteStop
+     *   }
+     * })
+     *
+     */
+    create<T extends FavoriteStopCreateArgs>(args: Prisma.SelectSubset<T, FavoriteStopCreateArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many FavoriteStops.
+     * @param {FavoriteStopCreateManyArgs} args - Arguments to create many FavoriteStops.
+     * @example
+     * // Create many FavoriteStops
+     * const favoriteStop = await prisma.favoriteStop.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends FavoriteStopCreateManyArgs>(args?: Prisma.SelectSubset<T, FavoriteStopCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many FavoriteStops and returns the data saved in the database.
+     * @param {FavoriteStopCreateManyAndReturnArgs} args - Arguments to create many FavoriteStops.
+     * @example
+     * // Create many FavoriteStops
+     * const favoriteStop = await prisma.favoriteStop.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many FavoriteStops and only return the `id`
+     * const favoriteStopWithIdOnly = await prisma.favoriteStop.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends FavoriteStopCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, FavoriteStopCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a FavoriteStop.
+     * @param {FavoriteStopDeleteArgs} args - Arguments to delete one FavoriteStop.
+     * @example
+     * // Delete one FavoriteStop
+     * const FavoriteStop = await prisma.favoriteStop.delete({
+     *   where: {
+     *     // ... filter to delete one FavoriteStop
+     *   }
+     * })
+     *
+     */
+    delete<T extends FavoriteStopDeleteArgs>(args: Prisma.SelectSubset<T, FavoriteStopDeleteArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one FavoriteStop.
+     * @param {FavoriteStopUpdateArgs} args - Arguments to update one FavoriteStop.
+     * @example
+     * // Update one FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends FavoriteStopUpdateArgs>(args: Prisma.SelectSubset<T, FavoriteStopUpdateArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more FavoriteStops.
+     * @param {FavoriteStopDeleteManyArgs} args - Arguments to filter FavoriteStops to delete.
+     * @example
+     * // Delete a few FavoriteStops
+     * const { count } = await prisma.favoriteStop.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends FavoriteStopDeleteManyArgs>(args?: Prisma.SelectSubset<T, FavoriteStopDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more FavoriteStops.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FavoriteStops
+     * const favoriteStop = await prisma.favoriteStop.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends FavoriteStopUpdateManyArgs>(args: Prisma.SelectSubset<T, FavoriteStopUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more FavoriteStops and returns the data updated in the database.
+     * @param {FavoriteStopUpdateManyAndReturnArgs} args - Arguments to update many FavoriteStops.
+     * @example
+     * // Update many FavoriteStops
+     * const favoriteStop = await prisma.favoriteStop.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more FavoriteStops and only return the `id`
+     * const favoriteStopWithIdOnly = await prisma.favoriteStop.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends FavoriteStopUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, FavoriteStopUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one FavoriteStop.
+     * @param {FavoriteStopUpsertArgs} args - Arguments to update or create a FavoriteStop.
+     * @example
+     * // Update or create a FavoriteStop
+     * const favoriteStop = await prisma.favoriteStop.upsert({
+     *   create: {
+     *     // ... data to create a FavoriteStop
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FavoriteStop we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FavoriteStopUpsertArgs>(args: Prisma.SelectSubset<T, FavoriteStopUpsertArgs<ExtArgs>>): Prisma.Prisma__FavoriteStopClient<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of FavoriteStops.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopCountArgs} args - Arguments to filter FavoriteStops to count.
+     * @example
+     * // Count the number of FavoriteStops
+     * const count = await prisma.favoriteStop.count({
+     *   where: {
+     *     // ... the filter for the FavoriteStops we want to count
+     *   }
+     * })
+    **/
+    count<T extends FavoriteStopCountArgs>(args?: Prisma.Subset<T, FavoriteStopCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], FavoriteStopCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a FavoriteStop.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FavoriteStopAggregateArgs>(args: Prisma.Subset<T, FavoriteStopAggregateArgs>): Prisma.PrismaPromise<GetFavoriteStopAggregateType<T>>;
+    /**
+     * Group by FavoriteStop.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FavoriteStopGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends FavoriteStopGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: FavoriteStopGroupByArgs['orderBy'];
+    } : {
+        orderBy?: FavoriteStopGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, FavoriteStopGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFavoriteStopGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the FavoriteStop model
+     */
+    readonly fields: FavoriteStopFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for FavoriteStop.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__FavoriteStopClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the FavoriteStop model
+ */
+export interface FavoriteStopFieldRefs {
+    readonly id: Prisma.FieldRef<"FavoriteStop", 'Int'>;
+    readonly stopId: Prisma.FieldRef<"FavoriteStop", 'String'>;
+    readonly name: Prisma.FieldRef<"FavoriteStop", 'String'>;
+    readonly lat: Prisma.FieldRef<"FavoriteStop", 'Float'>;
+    readonly lng: Prisma.FieldRef<"FavoriteStop", 'Float'>;
+    readonly savedAt: Prisma.FieldRef<"FavoriteStop", 'DateTime'>;
+    readonly userId: Prisma.FieldRef<"FavoriteStop", 'Int'>;
+}
+/**
+ * FavoriteStop findUnique
+ */
+export type FavoriteStopFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter, which FavoriteStop to fetch.
+     */
+    where: Prisma.FavoriteStopWhereUniqueInput;
+};
+/**
+ * FavoriteStop findUniqueOrThrow
+ */
+export type FavoriteStopFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter, which FavoriteStop to fetch.
+     */
+    where: Prisma.FavoriteStopWhereUniqueInput;
+};
+/**
+ * FavoriteStop findFirst
+ */
+export type FavoriteStopFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter, which FavoriteStop to fetch.
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of FavoriteStops to fetch.
+     */
+    orderBy?: Prisma.FavoriteStopOrderByWithRelationInput | Prisma.FavoriteStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for FavoriteStops.
+     */
+    cursor?: Prisma.FavoriteStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` FavoriteStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` FavoriteStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of FavoriteStops.
+     */
+    distinct?: Prisma.FavoriteStopScalarFieldEnum | Prisma.FavoriteStopScalarFieldEnum[];
+};
+/**
+ * FavoriteStop findFirstOrThrow
+ */
+export type FavoriteStopFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter, which FavoriteStop to fetch.
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of FavoriteStops to fetch.
+     */
+    orderBy?: Prisma.FavoriteStopOrderByWithRelationInput | Prisma.FavoriteStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for FavoriteStops.
+     */
+    cursor?: Prisma.FavoriteStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` FavoriteStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` FavoriteStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of FavoriteStops.
+     */
+    distinct?: Prisma.FavoriteStopScalarFieldEnum | Prisma.FavoriteStopScalarFieldEnum[];
+};
+/**
+ * FavoriteStop findMany
+ */
+export type FavoriteStopFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter, which FavoriteStops to fetch.
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of FavoriteStops to fetch.
+     */
+    orderBy?: Prisma.FavoriteStopOrderByWithRelationInput | Prisma.FavoriteStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing FavoriteStops.
+     */
+    cursor?: Prisma.FavoriteStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` FavoriteStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` FavoriteStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of FavoriteStops.
+     */
+    distinct?: Prisma.FavoriteStopScalarFieldEnum | Prisma.FavoriteStopScalarFieldEnum[];
+};
+/**
+ * FavoriteStop create
+ */
+export type FavoriteStopCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a FavoriteStop.
+     */
+    data: Prisma.XOR<Prisma.FavoriteStopCreateInput, Prisma.FavoriteStopUncheckedCreateInput>;
+};
+/**
+ * FavoriteStop createMany
+ */
+export type FavoriteStopCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FavoriteStops.
+     */
+    data: Prisma.FavoriteStopCreateManyInput | Prisma.FavoriteStopCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * FavoriteStop createManyAndReturn
+ */
+export type FavoriteStopCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * The data used to create many FavoriteStops.
+     */
+    data: Prisma.FavoriteStopCreateManyInput | Prisma.FavoriteStopCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * FavoriteStop update
+ */
+export type FavoriteStopUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a FavoriteStop.
+     */
+    data: Prisma.XOR<Prisma.FavoriteStopUpdateInput, Prisma.FavoriteStopUncheckedUpdateInput>;
+    /**
+     * Choose, which FavoriteStop to update.
+     */
+    where: Prisma.FavoriteStopWhereUniqueInput;
+};
+/**
+ * FavoriteStop updateMany
+ */
+export type FavoriteStopUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FavoriteStops.
+     */
+    data: Prisma.XOR<Prisma.FavoriteStopUpdateManyMutationInput, Prisma.FavoriteStopUncheckedUpdateManyInput>;
+    /**
+     * Filter which FavoriteStops to update
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * Limit how many FavoriteStops to update.
+     */
+    limit?: number;
+};
+/**
+ * FavoriteStop updateManyAndReturn
+ */
+export type FavoriteStopUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * The data used to update FavoriteStops.
+     */
+    data: Prisma.XOR<Prisma.FavoriteStopUpdateManyMutationInput, Prisma.FavoriteStopUncheckedUpdateManyInput>;
+    /**
+     * Filter which FavoriteStops to update
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * Limit how many FavoriteStops to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * FavoriteStop upsert
+ */
+export type FavoriteStopUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the FavoriteStop to update in case it exists.
+     */
+    where: Prisma.FavoriteStopWhereUniqueInput;
+    /**
+     * In case the FavoriteStop found by the `where` argument doesn't exist, create a new FavoriteStop with this data.
+     */
+    create: Prisma.XOR<Prisma.FavoriteStopCreateInput, Prisma.FavoriteStopUncheckedCreateInput>;
+    /**
+     * In case the FavoriteStop was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.FavoriteStopUpdateInput, Prisma.FavoriteStopUncheckedUpdateInput>;
+};
+/**
+ * FavoriteStop delete
+ */
+export type FavoriteStopDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+    /**
+     * Filter which FavoriteStop to delete.
+     */
+    where: Prisma.FavoriteStopWhereUniqueInput;
+};
+/**
+ * FavoriteStop deleteMany
+ */
+export type FavoriteStopDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which FavoriteStops to delete
+     */
+    where?: Prisma.FavoriteStopWhereInput;
+    /**
+     * Limit how many FavoriteStops to delete.
+     */
+    limit?: number;
+};
+/**
+ * FavoriteStop without action
+ */
+export type FavoriteStopDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FavoriteStop
+     */
+    select?: Prisma.FavoriteStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FavoriteStop
+     */
+    omit?: Prisma.FavoriteStopOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FavoriteStopInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=FavoriteStop.d.ts.map

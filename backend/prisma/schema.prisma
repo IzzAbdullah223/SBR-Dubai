@@ -1,7 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
+ 
 
 generator client {
   provider = "prisma-client"
@@ -10,4 +7,173 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+enum Language {
+  en
+  ar
+}
+
+enum Theme {
+  light
+  dark
+}
+
+
+enum OptimizationMode {
+  fastest
+  cheapest
+  less_walking
+  fewest_transfers
+}
+
+enum SignupSource {
+  web
+  mobile
+  admin
+}
+
+enum StopStatus {
+  active
+  inactive
+  maintenance
+}
+
+enum StopType {
+  stop
+  station
+  terminal
+}
+
+enum OptimizationPreference {
+  fastest
+  cheapest
+  minimal_walking
+  minimal_transfers
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  password     String?
+  name         String
+  phone        String?
+  language     Language      @default(en)
+  theme        Theme         @default(light)
+  walkingSpeed Float         @default(5)  
+  notifyEmail  Boolean       @default(true)
+  notifyPush   Boolean       @default(true)
+  notifyBus    Boolean       @default(true)
+  optimization OptimizationMode @default(fastest)
+  isActive     Boolean       @default(true)
+  isVerified   Boolean       @default(false)
+  lastLogin    DateTime?
+  signupSource SignupSource  @default(web)
+  favoriteStops FavoriteStop[]
+  savedRoutes  SavedRoute[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model FavoriteStop {
+  id      Int    @id @default(autoincrement())
+  stopId  String
+  name    String
+  lat     Float
+  lng     Float
+  savedAt DateTime @default(now())
+  user    User   @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
+
+model BusStop {
+  id        Int        @id @default(autoincrement())
+  stopId    String     @unique
+  name      String
+  lat       Float
+  lng       Float
+  routes    String[]
+  amenities String[]
+  type      StopType   @default(stop)
+  operator  String     @default("Roads and Transport Authority (RTA) Dubai")
+  osm_id    Int?
+  zone      String?
+  status    StopStatus @default(active)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+
+model BusRoute {
+  id            Int          @id @default(autoincrement())
+  routeNumber   String       @unique
+  name          String
+  stops         RouteStop[]
+  schedule      Json
+  fare          Json
+  duration      Float        @default(20)
+  distance      Float        @default(5)
+  numStops      Int          @default(0)
+  color         String       @default("#667eea")
+  textColor     String       @default("#FFFFFF")
+  type          String       @default("3")
+  ineId         String?
+  lineIdReturn  String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+
+
+model RouteStop {
+  id           Int      @id @default(autoincrement())
+  stopId       String
+  stopSequence Int
+  route        BusRoute @relation(fields: [routeId], references: [id])
+  routeId      Int
+
+  @@index([stopId])
+}
+
+
+model Line {
+  id            Int      @id @default(autoincrement())
+  lineId       String   @unique
+  coordinates   Json     // {lat, lng}[]
+  pointCount    Int      @default(0)
+  totalDistance Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SavedRoute {
+  id                     Int                    @id @default(autoincrement())
+  routeName              String
+  originName             String
+  originStopId           String?
+  originLat              Float
+  originLng              Float
+  destName               String
+  destStopId             String?
+  destLat                Float
+  destLng                Float
+  optimizationPreference OptimizationPreference @default(fastest)
+  timesUsed              Int                    @default(0)
+  lastUsed               DateTime?
+  averageTime            Float?
+  averageCost            Float?
+  notificationsEnabled   Boolean                @default(false)
+  notifyDays             Int[]
+  notifyTime             String?
+  isActive               Boolean                @default(true)
+  tags                   String[]
+  color                  String                 @default("#4CAF50")
+  notes                  String? 
+  user                   User                   @relation(fields: [userId], references: [id])
+  userId                 Int
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+
+  @@unique([userId, originLat, originLng, destLat, destLng])
 }

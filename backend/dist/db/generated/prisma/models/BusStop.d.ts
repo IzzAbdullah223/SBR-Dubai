@@ -1,0 +1,1326 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model BusStop
+ *
+ */
+export type BusStopModel = runtime.Types.Result.DefaultSelection<Prisma.$BusStopPayload>;
+export type AggregateBusStop = {
+    _count: BusStopCountAggregateOutputType | null;
+    _avg: BusStopAvgAggregateOutputType | null;
+    _sum: BusStopSumAggregateOutputType | null;
+    _min: BusStopMinAggregateOutputType | null;
+    _max: BusStopMaxAggregateOutputType | null;
+};
+export type BusStopAvgAggregateOutputType = {
+    id: number | null;
+    lat: number | null;
+    lng: number | null;
+    osm_id: number | null;
+};
+export type BusStopSumAggregateOutputType = {
+    id: number | null;
+    lat: number | null;
+    lng: number | null;
+    osm_id: number | null;
+};
+export type BusStopMinAggregateOutputType = {
+    id: number | null;
+    stopId: string | null;
+    name: string | null;
+    lat: number | null;
+    lng: number | null;
+    type: $Enums.StopType | null;
+    operator: string | null;
+    osm_id: number | null;
+    zone: string | null;
+    status: $Enums.StopStatus | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BusStopMaxAggregateOutputType = {
+    id: number | null;
+    stopId: string | null;
+    name: string | null;
+    lat: number | null;
+    lng: number | null;
+    type: $Enums.StopType | null;
+    operator: string | null;
+    osm_id: number | null;
+    zone: string | null;
+    status: $Enums.StopStatus | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BusStopCountAggregateOutputType = {
+    id: number;
+    stopId: number;
+    name: number;
+    lat: number;
+    lng: number;
+    routes: number;
+    amenities: number;
+    type: number;
+    operator: number;
+    osm_id: number;
+    zone: number;
+    status: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type BusStopAvgAggregateInputType = {
+    id?: true;
+    lat?: true;
+    lng?: true;
+    osm_id?: true;
+};
+export type BusStopSumAggregateInputType = {
+    id?: true;
+    lat?: true;
+    lng?: true;
+    osm_id?: true;
+};
+export type BusStopMinAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    type?: true;
+    operator?: true;
+    osm_id?: true;
+    zone?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BusStopMaxAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    type?: true;
+    operator?: true;
+    osm_id?: true;
+    zone?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BusStopCountAggregateInputType = {
+    id?: true;
+    stopId?: true;
+    name?: true;
+    lat?: true;
+    lng?: true;
+    routes?: true;
+    amenities?: true;
+    type?: true;
+    operator?: true;
+    osm_id?: true;
+    zone?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type BusStopAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusStop to aggregate.
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusStops to fetch.
+     */
+    orderBy?: Prisma.BusStopOrderByWithRelationInput | Prisma.BusStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.BusStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned BusStops
+    **/
+    _count?: true | BusStopCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: BusStopAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: BusStopSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: BusStopMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: BusStopMaxAggregateInputType;
+};
+export type GetBusStopAggregateType<T extends BusStopAggregateArgs> = {
+    [P in keyof T & keyof AggregateBusStop]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateBusStop[P]> : Prisma.GetScalarType<T[P], AggregateBusStop[P]>;
+};
+export type BusStopGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.BusStopWhereInput;
+    orderBy?: Prisma.BusStopOrderByWithAggregationInput | Prisma.BusStopOrderByWithAggregationInput[];
+    by: Prisma.BusStopScalarFieldEnum[] | Prisma.BusStopScalarFieldEnum;
+    having?: Prisma.BusStopScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: BusStopCountAggregateInputType | true;
+    _avg?: BusStopAvgAggregateInputType;
+    _sum?: BusStopSumAggregateInputType;
+    _min?: BusStopMinAggregateInputType;
+    _max?: BusStopMaxAggregateInputType;
+};
+export type BusStopGroupByOutputType = {
+    id: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    routes: string[];
+    amenities: string[];
+    type: $Enums.StopType;
+    operator: string;
+    osm_id: number | null;
+    zone: string | null;
+    status: $Enums.StopStatus;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: BusStopCountAggregateOutputType | null;
+    _avg: BusStopAvgAggregateOutputType | null;
+    _sum: BusStopSumAggregateOutputType | null;
+    _min: BusStopMinAggregateOutputType | null;
+    _max: BusStopMaxAggregateOutputType | null;
+};
+export type GetBusStopGroupByPayload<T extends BusStopGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<BusStopGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof BusStopGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], BusStopGroupByOutputType[P]> : Prisma.GetScalarType<T[P], BusStopGroupByOutputType[P]>;
+}>>;
+export type BusStopWhereInput = {
+    AND?: Prisma.BusStopWhereInput | Prisma.BusStopWhereInput[];
+    OR?: Prisma.BusStopWhereInput[];
+    NOT?: Prisma.BusStopWhereInput | Prisma.BusStopWhereInput[];
+    id?: Prisma.IntFilter<"BusStop"> | number;
+    stopId?: Prisma.StringFilter<"BusStop"> | string;
+    name?: Prisma.StringFilter<"BusStop"> | string;
+    lat?: Prisma.FloatFilter<"BusStop"> | number;
+    lng?: Prisma.FloatFilter<"BusStop"> | number;
+    routes?: Prisma.StringNullableListFilter<"BusStop">;
+    amenities?: Prisma.StringNullableListFilter<"BusStop">;
+    type?: Prisma.EnumStopTypeFilter<"BusStop"> | $Enums.StopType;
+    operator?: Prisma.StringFilter<"BusStop"> | string;
+    osm_id?: Prisma.IntNullableFilter<"BusStop"> | number | null;
+    zone?: Prisma.StringNullableFilter<"BusStop"> | string | null;
+    status?: Prisma.EnumStopStatusFilter<"BusStop"> | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFilter<"BusStop"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BusStop"> | Date | string;
+};
+export type BusStopOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    routes?: Prisma.SortOrder;
+    amenities?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    operator?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrderInput | Prisma.SortOrder;
+    zone?: Prisma.SortOrderInput | Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusStopWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    stopId?: string;
+    AND?: Prisma.BusStopWhereInput | Prisma.BusStopWhereInput[];
+    OR?: Prisma.BusStopWhereInput[];
+    NOT?: Prisma.BusStopWhereInput | Prisma.BusStopWhereInput[];
+    name?: Prisma.StringFilter<"BusStop"> | string;
+    lat?: Prisma.FloatFilter<"BusStop"> | number;
+    lng?: Prisma.FloatFilter<"BusStop"> | number;
+    routes?: Prisma.StringNullableListFilter<"BusStop">;
+    amenities?: Prisma.StringNullableListFilter<"BusStop">;
+    type?: Prisma.EnumStopTypeFilter<"BusStop"> | $Enums.StopType;
+    operator?: Prisma.StringFilter<"BusStop"> | string;
+    osm_id?: Prisma.IntNullableFilter<"BusStop"> | number | null;
+    zone?: Prisma.StringNullableFilter<"BusStop"> | string | null;
+    status?: Prisma.EnumStopStatusFilter<"BusStop"> | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFilter<"BusStop"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BusStop"> | Date | string;
+}, "id" | "stopId">;
+export type BusStopOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    routes?: Prisma.SortOrder;
+    amenities?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    operator?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrderInput | Prisma.SortOrder;
+    zone?: Prisma.SortOrderInput | Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.BusStopCountOrderByAggregateInput;
+    _avg?: Prisma.BusStopAvgOrderByAggregateInput;
+    _max?: Prisma.BusStopMaxOrderByAggregateInput;
+    _min?: Prisma.BusStopMinOrderByAggregateInput;
+    _sum?: Prisma.BusStopSumOrderByAggregateInput;
+};
+export type BusStopScalarWhereWithAggregatesInput = {
+    AND?: Prisma.BusStopScalarWhereWithAggregatesInput | Prisma.BusStopScalarWhereWithAggregatesInput[];
+    OR?: Prisma.BusStopScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.BusStopScalarWhereWithAggregatesInput | Prisma.BusStopScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"BusStop"> | number;
+    stopId?: Prisma.StringWithAggregatesFilter<"BusStop"> | string;
+    name?: Prisma.StringWithAggregatesFilter<"BusStop"> | string;
+    lat?: Prisma.FloatWithAggregatesFilter<"BusStop"> | number;
+    lng?: Prisma.FloatWithAggregatesFilter<"BusStop"> | number;
+    routes?: Prisma.StringNullableListFilter<"BusStop">;
+    amenities?: Prisma.StringNullableListFilter<"BusStop">;
+    type?: Prisma.EnumStopTypeWithAggregatesFilter<"BusStop"> | $Enums.StopType;
+    operator?: Prisma.StringWithAggregatesFilter<"BusStop"> | string;
+    osm_id?: Prisma.IntNullableWithAggregatesFilter<"BusStop"> | number | null;
+    zone?: Prisma.StringNullableWithAggregatesFilter<"BusStop"> | string | null;
+    status?: Prisma.EnumStopStatusWithAggregatesFilter<"BusStop"> | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"BusStop"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BusStop"> | Date | string;
+};
+export type BusStopCreateInput = {
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    routes?: Prisma.BusStopCreateroutesInput | string[];
+    amenities?: Prisma.BusStopCreateamenitiesInput | string[];
+    type?: $Enums.StopType;
+    operator?: string;
+    osm_id?: number | null;
+    zone?: string | null;
+    status?: $Enums.StopStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusStopUncheckedCreateInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    routes?: Prisma.BusStopCreateroutesInput | string[];
+    amenities?: Prisma.BusStopCreateamenitiesInput | string[];
+    type?: $Enums.StopType;
+    operator?: string;
+    osm_id?: number | null;
+    zone?: string | null;
+    status?: $Enums.StopStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusStopUpdateInput = {
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    routes?: Prisma.BusStopUpdateroutesInput | string[];
+    amenities?: Prisma.BusStopUpdateamenitiesInput | string[];
+    type?: Prisma.EnumStopTypeFieldUpdateOperationsInput | $Enums.StopType;
+    operator?: Prisma.StringFieldUpdateOperationsInput | string;
+    osm_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumStopStatusFieldUpdateOperationsInput | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusStopUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    routes?: Prisma.BusStopUpdateroutesInput | string[];
+    amenities?: Prisma.BusStopUpdateamenitiesInput | string[];
+    type?: Prisma.EnumStopTypeFieldUpdateOperationsInput | $Enums.StopType;
+    operator?: Prisma.StringFieldUpdateOperationsInput | string;
+    osm_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumStopStatusFieldUpdateOperationsInput | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusStopCreateManyInput = {
+    id?: number;
+    stopId: string;
+    name: string;
+    lat: number;
+    lng: number;
+    routes?: Prisma.BusStopCreateroutesInput | string[];
+    amenities?: Prisma.BusStopCreateamenitiesInput | string[];
+    type?: $Enums.StopType;
+    operator?: string;
+    osm_id?: number | null;
+    zone?: string | null;
+    status?: $Enums.StopStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BusStopUpdateManyMutationInput = {
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    routes?: Prisma.BusStopUpdateroutesInput | string[];
+    amenities?: Prisma.BusStopUpdateamenitiesInput | string[];
+    type?: Prisma.EnumStopTypeFieldUpdateOperationsInput | $Enums.StopType;
+    operator?: Prisma.StringFieldUpdateOperationsInput | string;
+    osm_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumStopStatusFieldUpdateOperationsInput | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BusStopUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    stopId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    lat?: Prisma.FloatFieldUpdateOperationsInput | number;
+    lng?: Prisma.FloatFieldUpdateOperationsInput | number;
+    routes?: Prisma.BusStopUpdateroutesInput | string[];
+    amenities?: Prisma.BusStopUpdateamenitiesInput | string[];
+    type?: Prisma.EnumStopTypeFieldUpdateOperationsInput | $Enums.StopType;
+    operator?: Prisma.StringFieldUpdateOperationsInput | string;
+    osm_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumStopStatusFieldUpdateOperationsInput | $Enums.StopStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null;
+    has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null;
+    hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>;
+    hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>;
+    isEmpty?: boolean;
+};
+export type BusStopCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    routes?: Prisma.SortOrder;
+    amenities?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    operator?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrder;
+    zone?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusStopAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrder;
+};
+export type BusStopMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    operator?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrder;
+    zone?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusStopMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    stopId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    operator?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrder;
+    zone?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BusStopSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lat?: Prisma.SortOrder;
+    lng?: Prisma.SortOrder;
+    osm_id?: Prisma.SortOrder;
+};
+export type BusStopCreateroutesInput = {
+    set: string[];
+};
+export type BusStopCreateamenitiesInput = {
+    set: string[];
+};
+export type BusStopUpdateroutesInput = {
+    set?: string[];
+    push?: string | string[];
+};
+export type BusStopUpdateamenitiesInput = {
+    set?: string[];
+    push?: string | string[];
+};
+export type EnumStopTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StopType;
+};
+export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+};
+export type EnumStopStatusFieldUpdateOperationsInput = {
+    set?: $Enums.StopStatus;
+};
+export type BusStopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    routes?: boolean;
+    amenities?: boolean;
+    type?: boolean;
+    operator?: boolean;
+    osm_id?: boolean;
+    zone?: boolean;
+    status?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["busStop"]>;
+export type BusStopSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    routes?: boolean;
+    amenities?: boolean;
+    type?: boolean;
+    operator?: boolean;
+    osm_id?: boolean;
+    zone?: boolean;
+    status?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["busStop"]>;
+export type BusStopSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    routes?: boolean;
+    amenities?: boolean;
+    type?: boolean;
+    operator?: boolean;
+    osm_id?: boolean;
+    zone?: boolean;
+    status?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["busStop"]>;
+export type BusStopSelectScalar = {
+    id?: boolean;
+    stopId?: boolean;
+    name?: boolean;
+    lat?: boolean;
+    lng?: boolean;
+    routes?: boolean;
+    amenities?: boolean;
+    type?: boolean;
+    operator?: boolean;
+    osm_id?: boolean;
+    zone?: boolean;
+    status?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type BusStopOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "stopId" | "name" | "lat" | "lng" | "routes" | "amenities" | "type" | "operator" | "osm_id" | "zone" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["busStop"]>;
+export type $BusStopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "BusStop";
+    objects: {};
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        stopId: string;
+        name: string;
+        lat: number;
+        lng: number;
+        routes: string[];
+        amenities: string[];
+        type: $Enums.StopType;
+        operator: string;
+        osm_id: number | null;
+        zone: string | null;
+        status: $Enums.StopStatus;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["busStop"]>;
+    composites: {};
+};
+export type BusStopGetPayload<S extends boolean | null | undefined | BusStopDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$BusStopPayload, S>;
+export type BusStopCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<BusStopFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: BusStopCountAggregateInputType | true;
+};
+export interface BusStopDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['BusStop'];
+        meta: {
+            name: 'BusStop';
+        };
+    };
+    /**
+     * Find zero or one BusStop that matches the filter.
+     * @param {BusStopFindUniqueArgs} args - Arguments to find a BusStop
+     * @example
+     * // Get one BusStop
+     * const busStop = await prisma.busStop.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BusStopFindUniqueArgs>(args: Prisma.SelectSubset<T, BusStopFindUniqueArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one BusStop that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BusStopFindUniqueOrThrowArgs} args - Arguments to find a BusStop
+     * @example
+     * // Get one BusStop
+     * const busStop = await prisma.busStop.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BusStopFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, BusStopFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BusStop that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopFindFirstArgs} args - Arguments to find a BusStop
+     * @example
+     * // Get one BusStop
+     * const busStop = await prisma.busStop.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BusStopFindFirstArgs>(args?: Prisma.SelectSubset<T, BusStopFindFirstArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BusStop that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopFindFirstOrThrowArgs} args - Arguments to find a BusStop
+     * @example
+     * // Get one BusStop
+     * const busStop = await prisma.busStop.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BusStopFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, BusStopFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more BusStops that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BusStops
+     * const busStops = await prisma.busStop.findMany()
+     *
+     * // Get first 10 BusStops
+     * const busStops = await prisma.busStop.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const busStopWithIdOnly = await prisma.busStop.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends BusStopFindManyArgs>(args?: Prisma.SelectSubset<T, BusStopFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a BusStop.
+     * @param {BusStopCreateArgs} args - Arguments to create a BusStop.
+     * @example
+     * // Create one BusStop
+     * const BusStop = await prisma.busStop.create({
+     *   data: {
+     *     // ... data to create a BusStop
+     *   }
+     * })
+     *
+     */
+    create<T extends BusStopCreateArgs>(args: Prisma.SelectSubset<T, BusStopCreateArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many BusStops.
+     * @param {BusStopCreateManyArgs} args - Arguments to create many BusStops.
+     * @example
+     * // Create many BusStops
+     * const busStop = await prisma.busStop.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends BusStopCreateManyArgs>(args?: Prisma.SelectSubset<T, BusStopCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many BusStops and returns the data saved in the database.
+     * @param {BusStopCreateManyAndReturnArgs} args - Arguments to create many BusStops.
+     * @example
+     * // Create many BusStops
+     * const busStop = await prisma.busStop.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many BusStops and only return the `id`
+     * const busStopWithIdOnly = await prisma.busStop.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends BusStopCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, BusStopCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a BusStop.
+     * @param {BusStopDeleteArgs} args - Arguments to delete one BusStop.
+     * @example
+     * // Delete one BusStop
+     * const BusStop = await prisma.busStop.delete({
+     *   where: {
+     *     // ... filter to delete one BusStop
+     *   }
+     * })
+     *
+     */
+    delete<T extends BusStopDeleteArgs>(args: Prisma.SelectSubset<T, BusStopDeleteArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one BusStop.
+     * @param {BusStopUpdateArgs} args - Arguments to update one BusStop.
+     * @example
+     * // Update one BusStop
+     * const busStop = await prisma.busStop.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends BusStopUpdateArgs>(args: Prisma.SelectSubset<T, BusStopUpdateArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more BusStops.
+     * @param {BusStopDeleteManyArgs} args - Arguments to filter BusStops to delete.
+     * @example
+     * // Delete a few BusStops
+     * const { count } = await prisma.busStop.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends BusStopDeleteManyArgs>(args?: Prisma.SelectSubset<T, BusStopDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more BusStops.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BusStops
+     * const busStop = await prisma.busStop.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends BusStopUpdateManyArgs>(args: Prisma.SelectSubset<T, BusStopUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more BusStops and returns the data updated in the database.
+     * @param {BusStopUpdateManyAndReturnArgs} args - Arguments to update many BusStops.
+     * @example
+     * // Update many BusStops
+     * const busStop = await prisma.busStop.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more BusStops and only return the `id`
+     * const busStopWithIdOnly = await prisma.busStop.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends BusStopUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, BusStopUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one BusStop.
+     * @param {BusStopUpsertArgs} args - Arguments to update or create a BusStop.
+     * @example
+     * // Update or create a BusStop
+     * const busStop = await prisma.busStop.upsert({
+     *   create: {
+     *     // ... data to create a BusStop
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BusStop we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BusStopUpsertArgs>(args: Prisma.SelectSubset<T, BusStopUpsertArgs<ExtArgs>>): Prisma.Prisma__BusStopClient<runtime.Types.Result.GetResult<Prisma.$BusStopPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of BusStops.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopCountArgs} args - Arguments to filter BusStops to count.
+     * @example
+     * // Count the number of BusStops
+     * const count = await prisma.busStop.count({
+     *   where: {
+     *     // ... the filter for the BusStops we want to count
+     *   }
+     * })
+    **/
+    count<T extends BusStopCountArgs>(args?: Prisma.Subset<T, BusStopCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], BusStopCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a BusStop.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BusStopAggregateArgs>(args: Prisma.Subset<T, BusStopAggregateArgs>): Prisma.PrismaPromise<GetBusStopAggregateType<T>>;
+    /**
+     * Group by BusStop.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BusStopGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends BusStopGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: BusStopGroupByArgs['orderBy'];
+    } : {
+        orderBy?: BusStopGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, BusStopGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBusStopGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the BusStop model
+     */
+    readonly fields: BusStopFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for BusStop.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__BusStopClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the BusStop model
+ */
+export interface BusStopFieldRefs {
+    readonly id: Prisma.FieldRef<"BusStop", 'Int'>;
+    readonly stopId: Prisma.FieldRef<"BusStop", 'String'>;
+    readonly name: Prisma.FieldRef<"BusStop", 'String'>;
+    readonly lat: Prisma.FieldRef<"BusStop", 'Float'>;
+    readonly lng: Prisma.FieldRef<"BusStop", 'Float'>;
+    readonly routes: Prisma.FieldRef<"BusStop", 'String[]'>;
+    readonly amenities: Prisma.FieldRef<"BusStop", 'String[]'>;
+    readonly type: Prisma.FieldRef<"BusStop", 'StopType'>;
+    readonly operator: Prisma.FieldRef<"BusStop", 'String'>;
+    readonly osm_id: Prisma.FieldRef<"BusStop", 'Int'>;
+    readonly zone: Prisma.FieldRef<"BusStop", 'String'>;
+    readonly status: Prisma.FieldRef<"BusStop", 'StopStatus'>;
+    readonly createdAt: Prisma.FieldRef<"BusStop", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"BusStop", 'DateTime'>;
+}
+/**
+ * BusStop findUnique
+ */
+export type BusStopFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter, which BusStop to fetch.
+     */
+    where: Prisma.BusStopWhereUniqueInput;
+};
+/**
+ * BusStop findUniqueOrThrow
+ */
+export type BusStopFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter, which BusStop to fetch.
+     */
+    where: Prisma.BusStopWhereUniqueInput;
+};
+/**
+ * BusStop findFirst
+ */
+export type BusStopFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter, which BusStop to fetch.
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusStops to fetch.
+     */
+    orderBy?: Prisma.BusStopOrderByWithRelationInput | Prisma.BusStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BusStops.
+     */
+    cursor?: Prisma.BusStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusStops.
+     */
+    distinct?: Prisma.BusStopScalarFieldEnum | Prisma.BusStopScalarFieldEnum[];
+};
+/**
+ * BusStop findFirstOrThrow
+ */
+export type BusStopFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter, which BusStop to fetch.
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusStops to fetch.
+     */
+    orderBy?: Prisma.BusStopOrderByWithRelationInput | Prisma.BusStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BusStops.
+     */
+    cursor?: Prisma.BusStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusStops.
+     */
+    distinct?: Prisma.BusStopScalarFieldEnum | Prisma.BusStopScalarFieldEnum[];
+};
+/**
+ * BusStop findMany
+ */
+export type BusStopFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter, which BusStops to fetch.
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BusStops to fetch.
+     */
+    orderBy?: Prisma.BusStopOrderByWithRelationInput | Prisma.BusStopOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing BusStops.
+     */
+    cursor?: Prisma.BusStopWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BusStops from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BusStops.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BusStops.
+     */
+    distinct?: Prisma.BusStopScalarFieldEnum | Prisma.BusStopScalarFieldEnum[];
+};
+/**
+ * BusStop create
+ */
+export type BusStopCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a BusStop.
+     */
+    data: Prisma.XOR<Prisma.BusStopCreateInput, Prisma.BusStopUncheckedCreateInput>;
+};
+/**
+ * BusStop createMany
+ */
+export type BusStopCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BusStops.
+     */
+    data: Prisma.BusStopCreateManyInput | Prisma.BusStopCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * BusStop createManyAndReturn
+ */
+export type BusStopCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * The data used to create many BusStops.
+     */
+    data: Prisma.BusStopCreateManyInput | Prisma.BusStopCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * BusStop update
+ */
+export type BusStopUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a BusStop.
+     */
+    data: Prisma.XOR<Prisma.BusStopUpdateInput, Prisma.BusStopUncheckedUpdateInput>;
+    /**
+     * Choose, which BusStop to update.
+     */
+    where: Prisma.BusStopWhereUniqueInput;
+};
+/**
+ * BusStop updateMany
+ */
+export type BusStopUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BusStops.
+     */
+    data: Prisma.XOR<Prisma.BusStopUpdateManyMutationInput, Prisma.BusStopUncheckedUpdateManyInput>;
+    /**
+     * Filter which BusStops to update
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * Limit how many BusStops to update.
+     */
+    limit?: number;
+};
+/**
+ * BusStop updateManyAndReturn
+ */
+export type BusStopUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * The data used to update BusStops.
+     */
+    data: Prisma.XOR<Prisma.BusStopUpdateManyMutationInput, Prisma.BusStopUncheckedUpdateManyInput>;
+    /**
+     * Filter which BusStops to update
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * Limit how many BusStops to update.
+     */
+    limit?: number;
+};
+/**
+ * BusStop upsert
+ */
+export type BusStopUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the BusStop to update in case it exists.
+     */
+    where: Prisma.BusStopWhereUniqueInput;
+    /**
+     * In case the BusStop found by the `where` argument doesn't exist, create a new BusStop with this data.
+     */
+    create: Prisma.XOR<Prisma.BusStopCreateInput, Prisma.BusStopUncheckedCreateInput>;
+    /**
+     * In case the BusStop was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.BusStopUpdateInput, Prisma.BusStopUncheckedUpdateInput>;
+};
+/**
+ * BusStop delete
+ */
+export type BusStopDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+    /**
+     * Filter which BusStop to delete.
+     */
+    where: Prisma.BusStopWhereUniqueInput;
+};
+/**
+ * BusStop deleteMany
+ */
+export type BusStopDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BusStops to delete
+     */
+    where?: Prisma.BusStopWhereInput;
+    /**
+     * Limit how many BusStops to delete.
+     */
+    limit?: number;
+};
+/**
+ * BusStop without action
+ */
+export type BusStopDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BusStop
+     */
+    select?: Prisma.BusStopSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BusStop
+     */
+    omit?: Prisma.BusStopOmit<ExtArgs> | null;
+};
+//# sourceMappingURL=BusStop.d.ts.map
