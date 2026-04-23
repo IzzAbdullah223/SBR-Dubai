@@ -70,3 +70,32 @@ export const OptimizationPreference = {
 } as const
 
 export type OptimizationPreference = (typeof OptimizationPreference)[keyof typeof OptimizationPreference]
+
+
+export const WalletStatus = {
+  active: 'active',
+  suspended: 'suspended',
+  closed: 'closed'
+} as const
+
+export type WalletStatus = (typeof WalletStatus)[keyof typeof WalletStatus]
+
+
+export const TransactionType = {
+  recharge: 'recharge',
+  deduction: 'deduction',
+  refund: 'refund',
+  transfer: 'transfer'
+} as const
+
+export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
+
+
+export const TransactionStatus = {
+  pending: 'pending',
+  completed: 'completed',
+  failed: 'failed',
+  refunded: 'refunded'
+} as const
+
+export type TransactionStatus = (typeof TransactionStatus)[keyof typeof TransactionStatus]

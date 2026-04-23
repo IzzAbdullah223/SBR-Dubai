@@ -52,12 +52,35 @@ enum OptimizationPreference {
   minimal_transfers
 }
 
+
+enum WalletStatus {
+  active
+  suspended
+  closed
+}
+
+enum TransactionType {
+  recharge
+  deduction
+  refund
+  transfer
+}
+
+enum TransactionStatus {
+  pending
+  completed
+  failed
+  refunded
+}
+
+
 model User {
   id           Int           @id @default(autoincrement())
   email        String        @unique
   password     String?
   name         String
   phone        String?
+  wallet  VirtualWallet?
   language     Language      @default(en)
   theme        Theme         @default(light)
   walkingSpeed Float         @default(5)  
@@ -176,4 +199,38 @@ model SavedRoute {
   updatedAt              DateTime               @updatedAt
 
   @@unique([userId, originLat, originLng, destLat, destLng])
+}
+
+model VirtualWallet {
+  id                  Int               @id @default(autoincrement())
+  balance             Float             @default(0)
+  cardNumber          String?           @unique
+  status              WalletStatus      @default(active)
+  lowBalanceThreshold Float             @default(10)
+  totalRecharges      Float             @default(0)
+  totalSpent          Float             @default(0)
+  tripCount           Int               @default(0)
+  lastRecharge        DateTime?
+  lastTransaction     DateTime?
+  user                User              @relation(fields: [userId], references: [id])
+  userId              Int               @unique
+  transactions        Transaction[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+}
+
+
+model Transaction {
+  id            Int               @id @default(autoincrement())
+  type          TransactionType
+  amount        Float
+  description   String
+  status        TransactionStatus @default(completed)
+  balanceAfter  Float
+  routeNumber   String?
+  fromStop      String?
+  toStop        String?
+  timestamp     DateTime          @default(now())
+  wallet        VirtualWallet     @relation(fields: [walletId], references: [id])
+  walletId      Int
 }

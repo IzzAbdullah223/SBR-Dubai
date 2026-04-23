@@ -57,7 +57,9 @@ export const ModelName = {
   BusRoute: 'BusRoute',
   RouteStop: 'RouteStop',
   Line: 'Line',
-  SavedRoute: 'SavedRoute'
+  SavedRoute: 'SavedRoute',
+  VirtualWallet: 'VirtualWallet',
+  Transaction: 'Transaction'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -206,6 +208,42 @@ export const SavedRouteScalarFieldEnum = {
 } as const
 
 export type SavedRouteScalarFieldEnum = (typeof SavedRouteScalarFieldEnum)[keyof typeof SavedRouteScalarFieldEnum]
+
+
+export const VirtualWalletScalarFieldEnum = {
+  id: 'id',
+  balance: 'balance',
+  cardNumber: 'cardNumber',
+  status: 'status',
+  lowBalanceThreshold: 'lowBalanceThreshold',
+  totalRecharges: 'totalRecharges',
+  totalSpent: 'totalSpent',
+  tripCount: 'tripCount',
+  lastRecharge: 'lastRecharge',
+  lastTransaction: 'lastTransaction',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VirtualWalletScalarFieldEnum = (typeof VirtualWalletScalarFieldEnum)[keyof typeof VirtualWalletScalarFieldEnum]
+
+
+export const TransactionScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  amount: 'amount',
+  description: 'description',
+  status: 'status',
+  balanceAfter: 'balanceAfter',
+  routeNumber: 'routeNumber',
+  fromStop: 'fromStop',
+  toStop: 'toStop',
+  timestamp: 'timestamp',
+  walletId: 'walletId'
+} as const
+
+export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
 export const SortOrder = {

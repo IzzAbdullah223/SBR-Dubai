@@ -324,6 +324,7 @@ export type UserWhereInput = {
   signupSource?: Prisma.EnumSignupSourceFilter<"User"> | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  wallet?: Prisma.XOR<Prisma.VirtualWalletNullableScalarRelationFilter, Prisma.VirtualWalletWhereInput> | null
   favoriteStops?: Prisma.FavoriteStopListRelationFilter
   savedRoutes?: Prisma.SavedRouteListRelationFilter
 }
@@ -347,6 +348,7 @@ export type UserOrderByWithRelationInput = {
   signupSource?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  wallet?: Prisma.VirtualWalletOrderByWithRelationInput
   favoriteStops?: Prisma.FavoriteStopOrderByRelationAggregateInput
   savedRoutes?: Prisma.SavedRouteOrderByRelationAggregateInput
 }
@@ -373,6 +375,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   signupSource?: Prisma.EnumSignupSourceFilter<"User"> | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  wallet?: Prisma.XOR<Prisma.VirtualWalletNullableScalarRelationFilter, Prisma.VirtualWalletWhereInput> | null
   favoriteStops?: Prisma.FavoriteStopListRelationFilter
   savedRoutes?: Prisma.SavedRouteListRelationFilter
 }, "id" | "email">
@@ -445,6 +448,7 @@ export type UserCreateInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletCreateNestedOneWithoutUserInput
   favoriteStops?: Prisma.FavoriteStopCreateNestedManyWithoutUserInput
   savedRoutes?: Prisma.SavedRouteCreateNestedManyWithoutUserInput
 }
@@ -468,6 +472,7 @@ export type UserUncheckedCreateInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletUncheckedCreateNestedOneWithoutUserInput
   favoriteStops?: Prisma.FavoriteStopUncheckedCreateNestedManyWithoutUserInput
   savedRoutes?: Prisma.SavedRouteUncheckedCreateNestedManyWithoutUserInput
 }
@@ -490,6 +495,7 @@ export type UserUpdateInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUpdateOneWithoutUserNestedInput
   favoriteStops?: Prisma.FavoriteStopUpdateManyWithoutUserNestedInput
   savedRoutes?: Prisma.SavedRouteUpdateManyWithoutUserNestedInput
 }
@@ -513,6 +519,7 @@ export type UserUncheckedUpdateInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUncheckedUpdateOneWithoutUserNestedInput
   favoriteStops?: Prisma.FavoriteStopUncheckedUpdateManyWithoutUserNestedInput
   savedRoutes?: Prisma.SavedRouteUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -737,6 +744,20 @@ export type UserUpdateOneRequiredWithoutSavedRoutesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedRoutesInput, Prisma.UserUpdateWithoutSavedRoutesInput>, Prisma.UserUncheckedUpdateWithoutSavedRoutesInput>
 }
 
+export type UserCreateNestedOneWithoutWalletInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  upsert?: Prisma.UserUpsertWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWalletInput, Prisma.UserUpdateWithoutWalletInput>, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
 export type UserCreateWithoutFavoriteStopsInput = {
   email: string
   password?: string | null
@@ -755,6 +776,7 @@ export type UserCreateWithoutFavoriteStopsInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletCreateNestedOneWithoutUserInput
   savedRoutes?: Prisma.SavedRouteCreateNestedManyWithoutUserInput
 }
 
@@ -777,6 +799,7 @@ export type UserUncheckedCreateWithoutFavoriteStopsInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletUncheckedCreateNestedOneWithoutUserInput
   savedRoutes?: Prisma.SavedRouteUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -814,6 +837,7 @@ export type UserUpdateWithoutFavoriteStopsInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUpdateOneWithoutUserNestedInput
   savedRoutes?: Prisma.SavedRouteUpdateManyWithoutUserNestedInput
 }
 
@@ -836,6 +860,7 @@ export type UserUncheckedUpdateWithoutFavoriteStopsInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUncheckedUpdateOneWithoutUserNestedInput
   savedRoutes?: Prisma.SavedRouteUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -857,6 +882,7 @@ export type UserCreateWithoutSavedRoutesInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletCreateNestedOneWithoutUserInput
   favoriteStops?: Prisma.FavoriteStopCreateNestedManyWithoutUserInput
 }
 
@@ -879,6 +905,7 @@ export type UserUncheckedCreateWithoutSavedRoutesInput = {
   signupSource?: $Enums.SignupSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  wallet?: Prisma.VirtualWalletUncheckedCreateNestedOneWithoutUserInput
   favoriteStops?: Prisma.FavoriteStopUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -916,6 +943,7 @@ export type UserUpdateWithoutSavedRoutesInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUpdateOneWithoutUserNestedInput
   favoriteStops?: Prisma.FavoriteStopUpdateManyWithoutUserNestedInput
 }
 
@@ -938,7 +966,114 @@ export type UserUncheckedUpdateWithoutSavedRoutesInput = {
   signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wallet?: Prisma.VirtualWalletUncheckedUpdateOneWithoutUserNestedInput
   favoriteStops?: Prisma.FavoriteStopUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutWalletInput = {
+  email: string
+  password?: string | null
+  name: string
+  phone?: string | null
+  language?: $Enums.Language
+  theme?: $Enums.Theme
+  walkingSpeed?: number
+  notifyEmail?: boolean
+  notifyPush?: boolean
+  notifyBus?: boolean
+  optimization?: $Enums.OptimizationMode
+  isActive?: boolean
+  isVerified?: boolean
+  lastLogin?: Date | string | null
+  signupSource?: $Enums.SignupSource
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  favoriteStops?: Prisma.FavoriteStopCreateNestedManyWithoutUserInput
+  savedRoutes?: Prisma.SavedRouteCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutWalletInput = {
+  id?: number
+  email: string
+  password?: string | null
+  name: string
+  phone?: string | null
+  language?: $Enums.Language
+  theme?: $Enums.Theme
+  walkingSpeed?: number
+  notifyEmail?: boolean
+  notifyPush?: boolean
+  notifyBus?: boolean
+  optimization?: $Enums.OptimizationMode
+  isActive?: boolean
+  isVerified?: boolean
+  lastLogin?: Date | string | null
+  signupSource?: $Enums.SignupSource
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  favoriteStops?: Prisma.FavoriteStopUncheckedCreateNestedManyWithoutUserInput
+  savedRoutes?: Prisma.SavedRouteUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutWalletInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+}
+
+export type UserUpsertWithoutWalletInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutWalletInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
+export type UserUpdateWithoutWalletInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+  theme?: Prisma.EnumThemeFieldUpdateOperationsInput | $Enums.Theme
+  walkingSpeed?: Prisma.FloatFieldUpdateOperationsInput | number
+  notifyEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyPush?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyBus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  optimization?: Prisma.EnumOptimizationModeFieldUpdateOperationsInput | $Enums.OptimizationMode
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  favoriteStops?: Prisma.FavoriteStopUpdateManyWithoutUserNestedInput
+  savedRoutes?: Prisma.SavedRouteUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutWalletInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+  theme?: Prisma.EnumThemeFieldUpdateOperationsInput | $Enums.Theme
+  walkingSpeed?: Prisma.FloatFieldUpdateOperationsInput | number
+  notifyEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyPush?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyBus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  optimization?: Prisma.EnumOptimizationModeFieldUpdateOperationsInput | $Enums.OptimizationMode
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  signupSource?: Prisma.EnumSignupSourceFieldUpdateOperationsInput | $Enums.SignupSource
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  favoriteStops?: Prisma.FavoriteStopUncheckedUpdateManyWithoutUserNestedInput
+  savedRoutes?: Prisma.SavedRouteUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1000,6 +1135,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   signupSource?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   favoriteStops?: boolean | Prisma.User$favoriteStopsArgs<ExtArgs>
   savedRoutes?: boolean | Prisma.User$savedRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1070,6 +1206,7 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "phone" | "language" | "theme" | "walkingSpeed" | "notifyEmail" | "notifyPush" | "notifyBus" | "optimization" | "isActive" | "isVerified" | "lastLogin" | "signupSource" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   favoriteStops?: boolean | Prisma.User$favoriteStopsArgs<ExtArgs>
   savedRoutes?: boolean | Prisma.User$savedRoutesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1080,6 +1217,7 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    wallet: Prisma.$VirtualWalletPayload<ExtArgs> | null
     favoriteStops: Prisma.$FavoriteStopPayload<ExtArgs>[]
     savedRoutes: Prisma.$SavedRoutePayload<ExtArgs>[]
   }
@@ -1496,6 +1634,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  wallet<T extends Prisma.User$walletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletArgs<ExtArgs>>): Prisma.Prisma__VirtualWalletClient<runtime.Types.Result.GetResult<Prisma.$VirtualWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   favoriteStops<T extends Prisma.User$favoriteStopsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$favoriteStopsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoriteStopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   savedRoutes<T extends Prisma.User$savedRoutesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedRoutesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedRoutePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1935,6 +2074,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
+}
+
+/**
+ * User.wallet
+ */
+export type User$walletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VirtualWallet
+   */
+  select?: Prisma.VirtualWalletSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VirtualWallet
+   */
+  omit?: Prisma.VirtualWalletOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VirtualWalletInclude<ExtArgs> | null
+  where?: Prisma.VirtualWalletWhereInput
 }
 
 /**

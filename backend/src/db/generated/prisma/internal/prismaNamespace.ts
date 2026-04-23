@@ -390,7 +390,9 @@ export const ModelName = {
   BusRoute: 'BusRoute',
   RouteStop: 'RouteStop',
   Line: 'Line',
-  SavedRoute: 'SavedRoute'
+  SavedRoute: 'SavedRoute',
+  VirtualWallet: 'VirtualWallet',
+  Transaction: 'Transaction'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "favoriteStop" | "busStop" | "busRoute" | "routeStop" | "line" | "savedRoute"
+    modelProps: "user" | "favoriteStop" | "busStop" | "busRoute" | "routeStop" | "line" | "savedRoute" | "virtualWallet" | "transaction"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -928,6 +930,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VirtualWallet: {
+      payload: Prisma.$VirtualWalletPayload<ExtArgs>
+      fields: Prisma.VirtualWalletFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VirtualWalletFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VirtualWalletFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        findFirst: {
+          args: Prisma.VirtualWalletFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VirtualWalletFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        findMany: {
+          args: Prisma.VirtualWalletFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>[]
+        }
+        create: {
+          args: Prisma.VirtualWalletCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        createMany: {
+          args: Prisma.VirtualWalletCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VirtualWalletCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>[]
+        }
+        delete: {
+          args: Prisma.VirtualWalletDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        update: {
+          args: Prisma.VirtualWalletUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        deleteMany: {
+          args: Prisma.VirtualWalletDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VirtualWalletUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VirtualWalletUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>[]
+        }
+        upsert: {
+          args: Prisma.VirtualWalletUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualWalletPayload>
+        }
+        aggregate: {
+          args: Prisma.VirtualWalletAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVirtualWallet>
+        }
+        groupBy: {
+          args: Prisma.VirtualWalletGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VirtualWalletGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VirtualWalletCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VirtualWalletCountAggregateOutputType> | number
+        }
+      }
+    }
+    Transaction: {
+      payload: Prisma.$TransactionPayload<ExtArgs>
+      fields: Prisma.TransactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        findFirst: {
+          args: Prisma.TransactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        findMany: {
+          args: Prisma.TransactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>[]
+        }
+        create: {
+          args: Prisma.TransactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        createMany: {
+          args: Prisma.TransactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TransactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>[]
+        }
+        delete: {
+          args: Prisma.TransactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        update: {
+          args: Prisma.TransactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.TransactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TransactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.TransactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransactionPayload>
+        }
+        aggregate: {
+          args: Prisma.TransactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransaction>
+        }
+        groupBy: {
+          args: Prisma.TransactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransactionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1097,6 +1247,42 @@ export const SavedRouteScalarFieldEnum = {
 } as const
 
 export type SavedRouteScalarFieldEnum = (typeof SavedRouteScalarFieldEnum)[keyof typeof SavedRouteScalarFieldEnum]
+
+
+export const VirtualWalletScalarFieldEnum = {
+  id: 'id',
+  balance: 'balance',
+  cardNumber: 'cardNumber',
+  status: 'status',
+  lowBalanceThreshold: 'lowBalanceThreshold',
+  totalRecharges: 'totalRecharges',
+  totalSpent: 'totalSpent',
+  tripCount: 'tripCount',
+  lastRecharge: 'lastRecharge',
+  lastTransaction: 'lastTransaction',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VirtualWalletScalarFieldEnum = (typeof VirtualWalletScalarFieldEnum)[keyof typeof VirtualWalletScalarFieldEnum]
+
+
+export const TransactionScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  amount: 'amount',
+  description: 'description',
+  status: 'status',
+  balanceAfter: 'balanceAfter',
+  routeNumber: 'routeNumber',
+  fromStop: 'fromStop',
+  toStop: 'toStop',
+  timestamp: 'timestamp',
+  walletId: 'walletId'
+} as const
+
+export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1319,6 +1505,48 @@ export type EnumOptimizationPreferenceFieldRefInput<$PrismaModel> = FieldRefInpu
 export type ListEnumOptimizationPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OptimizationPreference[]'>
     
 
+
+/**
+ * Reference to a field of type 'WalletStatus'
+ */
+export type EnumWalletStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WalletStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'WalletStatus[]'
+ */
+export type ListEnumWalletStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WalletStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionType'
+ */
+export type EnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionType'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionType[]'
+ */
+export type ListEnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionStatus'
+ */
+export type EnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'TransactionStatus[]'
+ */
+export type ListEnumTransactionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1436,6 +1664,8 @@ export type GlobalOmitConfig = {
   routeStop?: Prisma.RouteStopOmit
   line?: Prisma.LineOmit
   savedRoute?: Prisma.SavedRouteOmit
+  virtualWallet?: Prisma.VirtualWalletOmit
+  transaction?: Prisma.TransactionOmit
 }
 
 /* Types for Logging */
