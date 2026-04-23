@@ -141,7 +141,7 @@ model BusRoute {
   color         String       @default("#667eea")
   textColor     String       @default("#FFFFFF")
   type          String       @default("3")
-  ineId         String?
+  lineId         String?
   lineIdReturn  String?
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt

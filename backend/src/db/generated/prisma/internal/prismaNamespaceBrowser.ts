@@ -147,7 +147,7 @@ export const BusRouteScalarFieldEnum = {
   color: 'color',
   textColor: 'textColor',
   type: 'type',
-  ineId: 'ineId',
+  lineId: 'lineId',
   lineIdReturn: 'lineIdReturn',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
