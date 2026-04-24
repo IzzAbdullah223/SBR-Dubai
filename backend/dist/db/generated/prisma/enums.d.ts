@@ -40,4 +40,24 @@ export declare const OptimizationPreference: {
     readonly minimal_transfers: "minimal_transfers";
 };
 export type OptimizationPreference = (typeof OptimizationPreference)[keyof typeof OptimizationPreference];
+export declare const WalletStatus: {
+    readonly active: "active";
+    readonly suspended: "suspended";
+    readonly closed: "closed";
+};
+export type WalletStatus = (typeof WalletStatus)[keyof typeof WalletStatus];
+export declare const TransactionType: {
+    readonly recharge: "recharge";
+    readonly deduction: "deduction";
+    readonly refund: "refund";
+    readonly transfer: "transfer";
+};
+export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
+export declare const TransactionStatus: {
+    readonly pending: "pending";
+    readonly completed: "completed";
+    readonly failed: "failed";
+    readonly refunded: "refunded";
+};
+export type TransactionStatus = (typeof TransactionStatus)[keyof typeof TransactionStatus];
 //# sourceMappingURL=enums.d.ts.map

@@ -34,7 +34,7 @@ export type BusRouteMinAggregateOutputType = {
     color: string | null;
     textColor: string | null;
     type: string | null;
-    ineId: string | null;
+    lineId: string | null;
     lineIdReturn: string | null;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -49,7 +49,7 @@ export type BusRouteMaxAggregateOutputType = {
     color: string | null;
     textColor: string | null;
     type: string | null;
-    ineId: string | null;
+    lineId: string | null;
     lineIdReturn: string | null;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -66,7 +66,7 @@ export type BusRouteCountAggregateOutputType = {
     color: number;
     textColor: number;
     type: number;
-    ineId: number;
+    lineId: number;
     lineIdReturn: number;
     createdAt: number;
     updatedAt: number;
@@ -94,7 +94,7 @@ export type BusRouteMinAggregateInputType = {
     color?: true;
     textColor?: true;
     type?: true;
-    ineId?: true;
+    lineId?: true;
     lineIdReturn?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -109,7 +109,7 @@ export type BusRouteMaxAggregateInputType = {
     color?: true;
     textColor?: true;
     type?: true;
-    ineId?: true;
+    lineId?: true;
     lineIdReturn?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -126,7 +126,7 @@ export type BusRouteCountAggregateInputType = {
     color?: true;
     textColor?: true;
     type?: true;
-    ineId?: true;
+    lineId?: true;
     lineIdReturn?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -220,7 +220,7 @@ export type BusRouteGroupByOutputType = {
     color: string;
     textColor: string;
     type: string;
-    ineId: string | null;
+    lineId: string | null;
     lineIdReturn: string | null;
     createdAt: Date;
     updatedAt: Date;
@@ -248,7 +248,7 @@ export type BusRouteWhereInput = {
     color?: Prisma.StringFilter<"BusRoute"> | string;
     textColor?: Prisma.StringFilter<"BusRoute"> | string;
     type?: Prisma.StringFilter<"BusRoute"> | string;
-    ineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    lineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
     lineIdReturn?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
@@ -266,7 +266,7 @@ export type BusRouteOrderByWithRelationInput = {
     color?: Prisma.SortOrder;
     textColor?: Prisma.SortOrder;
     type?: Prisma.SortOrder;
-    ineId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    lineId?: Prisma.SortOrderInput | Prisma.SortOrder;
     lineIdReturn?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -287,7 +287,7 @@ export type BusRouteWhereUniqueInput = Prisma.AtLeast<{
     color?: Prisma.StringFilter<"BusRoute"> | string;
     textColor?: Prisma.StringFilter<"BusRoute"> | string;
     type?: Prisma.StringFilter<"BusRoute"> | string;
-    ineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
+    lineId?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
     lineIdReturn?: Prisma.StringNullableFilter<"BusRoute"> | string | null;
     createdAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"BusRoute"> | Date | string;
@@ -305,7 +305,7 @@ export type BusRouteOrderByWithAggregationInput = {
     color?: Prisma.SortOrder;
     textColor?: Prisma.SortOrder;
     type?: Prisma.SortOrder;
-    ineId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    lineId?: Prisma.SortOrderInput | Prisma.SortOrder;
     lineIdReturn?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -330,7 +330,7 @@ export type BusRouteScalarWhereWithAggregatesInput = {
     color?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
     textColor?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
     type?: Prisma.StringWithAggregatesFilter<"BusRoute"> | string;
-    ineId?: Prisma.StringNullableWithAggregatesFilter<"BusRoute"> | string | null;
+    lineId?: Prisma.StringNullableWithAggregatesFilter<"BusRoute"> | string | null;
     lineIdReturn?: Prisma.StringNullableWithAggregatesFilter<"BusRoute"> | string | null;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"BusRoute"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BusRoute"> | Date | string;
@@ -346,7 +346,7 @@ export type BusRouteCreateInput = {
     color?: string;
     textColor?: string;
     type?: string;
-    ineId?: string | null;
+    lineId?: string | null;
     lineIdReturn?: string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -364,7 +364,7 @@ export type BusRouteUncheckedCreateInput = {
     color?: string;
     textColor?: string;
     type?: string;
-    ineId?: string | null;
+    lineId?: string | null;
     lineIdReturn?: string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -381,7 +381,7 @@ export type BusRouteUpdateInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -399,7 +399,7 @@ export type BusRouteUncheckedUpdateInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -417,7 +417,7 @@ export type BusRouteCreateManyInput = {
     color?: string;
     textColor?: string;
     type?: string;
-    ineId?: string | null;
+    lineId?: string | null;
     lineIdReturn?: string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -433,7 +433,7 @@ export type BusRouteUpdateManyMutationInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -450,7 +450,7 @@ export type BusRouteUncheckedUpdateManyInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -467,7 +467,7 @@ export type BusRouteCountOrderByAggregateInput = {
     color?: Prisma.SortOrder;
     textColor?: Prisma.SortOrder;
     type?: Prisma.SortOrder;
-    ineId?: Prisma.SortOrder;
+    lineId?: Prisma.SortOrder;
     lineIdReturn?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -488,7 +488,7 @@ export type BusRouteMaxOrderByAggregateInput = {
     color?: Prisma.SortOrder;
     textColor?: Prisma.SortOrder;
     type?: Prisma.SortOrder;
-    ineId?: Prisma.SortOrder;
+    lineId?: Prisma.SortOrder;
     lineIdReturn?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -503,7 +503,7 @@ export type BusRouteMinOrderByAggregateInput = {
     color?: Prisma.SortOrder;
     textColor?: Prisma.SortOrder;
     type?: Prisma.SortOrder;
-    ineId?: Prisma.SortOrder;
+    lineId?: Prisma.SortOrder;
     lineIdReturn?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
@@ -541,7 +541,7 @@ export type BusRouteCreateWithoutStopsInput = {
     color?: string;
     textColor?: string;
     type?: string;
-    ineId?: string | null;
+    lineId?: string | null;
     lineIdReturn?: string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -558,7 +558,7 @@ export type BusRouteUncheckedCreateWithoutStopsInput = {
     color?: string;
     textColor?: string;
     type?: string;
-    ineId?: string | null;
+    lineId?: string | null;
     lineIdReturn?: string | null;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -587,7 +587,7 @@ export type BusRouteUpdateWithoutStopsInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -604,7 +604,7 @@ export type BusRouteUncheckedUpdateWithoutStopsInput = {
     color?: Prisma.StringFieldUpdateOperationsInput | string;
     textColor?: Prisma.StringFieldUpdateOperationsInput | string;
     type?: Prisma.StringFieldUpdateOperationsInput | string;
-    ineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    lineId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     lineIdReturn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
@@ -645,7 +645,7 @@ export type BusRouteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
     color?: boolean;
     textColor?: boolean;
     type?: boolean;
-    ineId?: boolean;
+    lineId?: boolean;
     lineIdReturn?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -664,7 +664,7 @@ export type BusRouteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
     color?: boolean;
     textColor?: boolean;
     type?: boolean;
-    ineId?: boolean;
+    lineId?: boolean;
     lineIdReturn?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -681,7 +681,7 @@ export type BusRouteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
     color?: boolean;
     textColor?: boolean;
     type?: boolean;
-    ineId?: boolean;
+    lineId?: boolean;
     lineIdReturn?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -698,12 +698,12 @@ export type BusRouteSelectScalar = {
     color?: boolean;
     textColor?: boolean;
     type?: boolean;
-    ineId?: boolean;
+    lineId?: boolean;
     lineIdReturn?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
 };
-export type BusRouteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "routeNumber" | "name" | "schedule" | "fare" | "duration" | "distance" | "numStops" | "color" | "textColor" | "type" | "ineId" | "lineIdReturn" | "createdAt" | "updatedAt", ExtArgs["result"]["busRoute"]>;
+export type BusRouteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "routeNumber" | "name" | "schedule" | "fare" | "duration" | "distance" | "numStops" | "color" | "textColor" | "type" | "lineId" | "lineIdReturn" | "createdAt" | "updatedAt", ExtArgs["result"]["busRoute"]>;
 export type BusRouteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     stops?: boolean | Prisma.BusRoute$stopsArgs<ExtArgs>;
     _count?: boolean | Prisma.BusRouteCountOutputTypeDefaultArgs<ExtArgs>;
@@ -727,7 +727,7 @@ export type $BusRoutePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
         color: string;
         textColor: string;
         type: string;
-        ineId: string | null;
+        lineId: string | null;
         lineIdReturn: string | null;
         createdAt: Date;
         updatedAt: Date;
@@ -1097,7 +1097,7 @@ export interface BusRouteFieldRefs {
     readonly color: Prisma.FieldRef<"BusRoute", 'String'>;
     readonly textColor: Prisma.FieldRef<"BusRoute", 'String'>;
     readonly type: Prisma.FieldRef<"BusRoute", 'String'>;
-    readonly ineId: Prisma.FieldRef<"BusRoute", 'String'>;
+    readonly lineId: Prisma.FieldRef<"BusRoute", 'String'>;
     readonly lineIdReturn: Prisma.FieldRef<"BusRoute", 'String'>;
     readonly createdAt: Prisma.FieldRef<"BusRoute", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"BusRoute", 'DateTime'>;

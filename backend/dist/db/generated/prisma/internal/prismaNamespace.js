@@ -74,7 +74,9 @@ export const ModelName = {
     BusRoute: 'BusRoute',
     RouteStop: 'RouteStop',
     Line: 'Line',
-    SavedRoute: 'SavedRoute'
+    SavedRoute: 'SavedRoute',
+    VirtualWallet: 'VirtualWallet',
+    Transaction: 'Transaction'
 };
 /**
  * Enums
@@ -142,7 +144,7 @@ export const BusRouteScalarFieldEnum = {
     color: 'color',
     textColor: 'textColor',
     type: 'type',
-    ineId: 'ineId',
+    lineId: 'lineId',
     lineIdReturn: 'lineIdReturn',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -188,6 +190,34 @@ export const SavedRouteScalarFieldEnum = {
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
+};
+export const VirtualWalletScalarFieldEnum = {
+    id: 'id',
+    balance: 'balance',
+    cardNumber: 'cardNumber',
+    status: 'status',
+    lowBalanceThreshold: 'lowBalanceThreshold',
+    totalRecharges: 'totalRecharges',
+    totalSpent: 'totalSpent',
+    tripCount: 'tripCount',
+    lastRecharge: 'lastRecharge',
+    lastTransaction: 'lastTransaction',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const TransactionScalarFieldEnum = {
+    id: 'id',
+    type: 'type',
+    amount: 'amount',
+    description: 'description',
+    status: 'status',
+    balanceAfter: 'balanceAfter',
+    routeNumber: 'routeNumber',
+    fromStop: 'fromStop',
+    toStop: 'toStop',
+    timestamp: 'timestamp',
+    walletId: 'walletId'
 };
 export const SortOrder = {
     asc: 'asc',

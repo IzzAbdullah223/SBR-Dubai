@@ -5,5 +5,7 @@ export type * from './models/BusRoute.js';
 export type * from './models/RouteStop.js';
 export type * from './models/Line.js';
 export type * from './models/SavedRoute.js';
+export type * from './models/VirtualWallet.js';
+export type * from './models/Transaction.js';
 export type * from './commonInputTypes.js';
 //# sourceMappingURL=models.d.ts.map

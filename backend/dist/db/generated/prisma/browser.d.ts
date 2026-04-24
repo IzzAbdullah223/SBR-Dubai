@@ -37,4 +37,14 @@ export type Line = Prisma.LineModel;
  *
  */
 export type SavedRoute = Prisma.SavedRouteModel;
+/**
+ * Model VirtualWallet
+ *
+ */
+export type VirtualWallet = Prisma.VirtualWalletModel;
+/**
+ * Model Transaction
+ *
+ */
+export type Transaction = Prisma.TransactionModel;
 //# sourceMappingURL=browser.d.ts.map

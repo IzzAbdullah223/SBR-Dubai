@@ -33,6 +33,8 @@ export declare const ModelName: {
     readonly RouteStop: "RouteStop";
     readonly Line: "Line";
     readonly SavedRoute: "SavedRoute";
+    readonly VirtualWallet: "VirtualWallet";
+    readonly Transaction: "Transaction";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -102,7 +104,7 @@ export declare const BusRouteScalarFieldEnum: {
     readonly color: "color";
     readonly textColor: "textColor";
     readonly type: "type";
-    readonly ineId: "ineId";
+    readonly lineId: "lineId";
     readonly lineIdReturn: "lineIdReturn";
     readonly createdAt: "createdAt";
     readonly updatedAt: "updatedAt";
@@ -153,6 +155,36 @@ export declare const SavedRouteScalarFieldEnum: {
     readonly updatedAt: "updatedAt";
 };
 export type SavedRouteScalarFieldEnum = (typeof SavedRouteScalarFieldEnum)[keyof typeof SavedRouteScalarFieldEnum];
+export declare const VirtualWalletScalarFieldEnum: {
+    readonly id: "id";
+    readonly balance: "balance";
+    readonly cardNumber: "cardNumber";
+    readonly status: "status";
+    readonly lowBalanceThreshold: "lowBalanceThreshold";
+    readonly totalRecharges: "totalRecharges";
+    readonly totalSpent: "totalSpent";
+    readonly tripCount: "tripCount";
+    readonly lastRecharge: "lastRecharge";
+    readonly lastTransaction: "lastTransaction";
+    readonly userId: "userId";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type VirtualWalletScalarFieldEnum = (typeof VirtualWalletScalarFieldEnum)[keyof typeof VirtualWalletScalarFieldEnum];
+export declare const TransactionScalarFieldEnum: {
+    readonly id: "id";
+    readonly type: "type";
+    readonly amount: "amount";
+    readonly description: "description";
+    readonly status: "status";
+    readonly balanceAfter: "balanceAfter";
+    readonly routeNumber: "routeNumber";
+    readonly fromStop: "fromStop";
+    readonly toStop: "toStop";
+    readonly timestamp: "timestamp";
+    readonly walletId: "walletId";
+};
+export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

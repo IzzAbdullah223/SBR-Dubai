@@ -1,0 +1,1 @@
+{"version":3,"file":"busRouteRoutes.js","sourceRoot":"","sources":["../../src/routes/busRouteRoutes.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,SAAS,CAAC;AACjC,OAAO,EAAE,YAAY,EAAC,gBAAgB,EAAE,MAAM,qCAAqC,CAAC;AAEpF,MAAM,CAAC,MAAM,cAAc,GAAG,MAAM,EAAE,CAAC;AAEvC,cAAc,CAAC,GAAG,CAAC,SAAS,EAAE,YAAY,CAAC,CAAC;AAC5C,cAAc,CAAC,GAAG,CAAC,sBAAsB,EAAE,gBAAgB,CAAC,CAAC"}

@@ -194,6 +194,28 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get savedRoute(): Prisma.SavedRouteDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.virtualWallet`: Exposes CRUD operations for the **VirtualWallet** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more VirtualWallets
+      * const virtualWallets = await prisma.virtualWallet.findMany()
+      * ```
+      */
+    get virtualWallet(): Prisma.VirtualWalletDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.transaction`: Exposes CRUD operations for the **Transaction** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Transactions
+      * const transactions = await prisma.transaction.findMany()
+      * ```
+      */
+    get transaction(): Prisma.TransactionDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

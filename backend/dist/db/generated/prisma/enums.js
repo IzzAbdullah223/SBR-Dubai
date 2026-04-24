@@ -42,4 +42,21 @@ export const OptimizationPreference = {
     minimal_walking: 'minimal_walking',
     minimal_transfers: 'minimal_transfers'
 };
+export const WalletStatus = {
+    active: 'active',
+    suspended: 'suspended',
+    closed: 'closed'
+};
+export const TransactionType = {
+    recharge: 'recharge',
+    deduction: 'deduction',
+    refund: 'refund',
+    transfer: 'transfer'
+};
+export const TransactionStatus = {
+    pending: 'pending',
+    completed: 'completed',
+    failed: 'failed',
+    refunded: 'refunded'
+};
 //# sourceMappingURL=enums.js.map

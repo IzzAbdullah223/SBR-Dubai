@@ -88,7 +88,7 @@ export const changePassword = async (req: Request, res: Response): Promise<void>
 
     res.status(200).json({ success: true, message: 'Password changed successfully' });
   } catch (error) {
-    console.error('❌ changePassword error:', error);
+    console.error('changePassword error:', error);
     res.status(500).json({ success: false, message: 'Failed to change password' });
   }
 };
@@ -119,7 +119,7 @@ export const updatePreferences = async (req: Request, res: Response): Promise<vo
 
     res.status(200).json({ success: true, user: db.getPublicProfile(user) });
   } catch (error) {
-    console.error('❌ updatePreferences error:', error);
+    console.error('updatePreferences error:', error);
     res.status(500).json({ success: false, message: 'Failed to update preferences' });
   }
 };
@@ -159,7 +159,7 @@ export const getFavoriteStops = async (req: Request, res: Response): Promise<voi
 
     res.status(200).json({ success: true, data: stops });
   } catch (error) {
-    console.error('❌ getFavoriteStops error:', error);
+    console.error('getFavoriteStops error:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch favorite stops' });
   }
 };
@@ -220,7 +220,7 @@ export const clearSavedRoutes = async (req: Request, res: Response): Promise<voi
 
     res.status(200).json({ success: true, deleted });
   } catch (error) {
-    console.error('❌ clearSavedRoutes error:', error);
+    console.error('clearSavedRoutes error:', error);
     res.status(500).json({ success: false, message: 'Failed to clear saved routes' });
   }
 };
@@ -255,7 +255,7 @@ export const deleteAccount = async (req: Request, res: Response): Promise<void> 
 
     res.status(200).json({ success: true, message: 'Account deleted successfully' });
   } catch (error) {
-    console.error('❌ deleteAccount error:', error);
+    console.error('deleteAccount error:', error);
     res.status(500).json({ success: false, message: 'Failed to delete account' });
   }
 };
