@@ -1,5 +1,20 @@
- 
+
 import {type RouteWithStops} from '../db/queries.js'
+import z from 'zod';
+
+export const LatLng = z.object({
+  lat: z.number({ message: 'lat is required' }),
+  lng: z.number({ message: 'lng is required' }),
+});
+
+export const FindBusesSchema = z.object({
+  origin:           LatLng,
+  destination:      LatLng,
+  optimizationMode: z
+    .enum(['fastest', 'cheapest', 'less_walking', 'fewest_transfers'])
+    .optional(),
+});
+
 
 export interface Weights {
   time: number
@@ -35,6 +50,7 @@ export interface Bus {
   totalJourneyTime: number
   journeyType: 'direct' | 'transfer'
   score?: number
+  upcomingDepartures?: { departureTime: string; departureTime24: string; minutesFromNow: number }[]
   [key: string]: unknown
 }
 
