@@ -1,13 +1,10 @@
-import { type  Request, type Response } from 'express';
+import { type Response } from 'express';
+import { type AuthRequest } from '../middleware/Verifytoken.js';
 import * as db from '../db/queries.js';
 
-// 
-// auto-creates wallet on first access — user doesn't need to do anything
-export const getWallet = async (req: Request, res: Response): Promise<void> => {
-  // auth here later
+export const getWallet = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const userId = req.user?.id as number;
-
+    const userId = req.userId!;
     let wallet = await db.getWalletByUserId(userId);
     if (!wallet) {
       wallet = await db.createWallet(userId);
@@ -18,32 +15,30 @@ export const getWallet = async (req: Request, res: Response): Promise<void> => {
     res.status(200).json({
       success: true,
       data: {
-        balance:             wallet.balance,
-        cardNumber:          wallet.cardNumber,
-        status:              wallet.status,
-        isBalanceLow:        wallet.balance <= wallet.lowBalanceThreshold,
-        lowThreshold:        wallet.lowBalanceThreshold,
+        balance:           wallet.balance,
+        cardNumber:        wallet.cardNumber,
+        status:            wallet.status,
+        isBalanceLow:      wallet.balance <= wallet.lowBalanceThreshold,
+        lowThreshold:      wallet.lowBalanceThreshold,
         stats: {
-          totalRecharges:    wallet.totalRecharges,
-          totalSpent:        wallet.totalSpent,
-          tripCount:         wallet.tripCount,
-          lastRecharge:      wallet.lastRecharge,
-          lastTransaction:   wallet.lastTransaction,
+          totalRecharges:  wallet.totalRecharges,
+          totalSpent:      wallet.totalSpent,
+          tripCount:       wallet.tripCount,
+          lastRecharge:    wallet.lastRecharge,
+          lastTransaction: wallet.lastTransaction,
         },
         recentTransactions,
       },
     });
   } catch (error) {
     console.error('getWallet error:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch wallet', });
+    res.status(500).json({ success: false, message: 'Failed to fetch wallet' });
   }
 };
 
- 
-export const rechargeWallet = async (req: Request, res: Response): Promise<void> => {
-  // auth here later
+export const rechargeWallet = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const userId = req.user?.id as number;
+    const userId = req.userId!;
     const parsed = parseFloat(req.body.amount);
 
     if (!parsed || parsed <= 0) {
@@ -62,7 +57,6 @@ export const rechargeWallet = async (req: Request, res: Response): Promise<void>
 
     const newBalance = wallet.balance + parsed;
 
- 
     const [updatedWallet] = await Promise.all([
       db.updateWalletBalance(wallet.id, newBalance, parsed),
       db.createTransaction({
@@ -89,11 +83,9 @@ export const rechargeWallet = async (req: Request, res: Response): Promise<void>
   }
 };
 
- 
-export const getTransactions = async (req: Request, res: Response): Promise<void> => {
-  // auth here later
+export const getTransactions = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const userId = req.user?.id as number;
+    const userId = req.userId!;
     const limit  = parseInt(req.query['limit'] as string) || 10;
     const skip   = parseInt(req.query['skip']  as string) || 0;
 
@@ -104,11 +96,7 @@ export const getTransactions = async (req: Request, res: Response): Promise<void
     }
 
     const transactions = await db.getTransactionsByWalletId(wallet.id, limit, skip);
-
-    res.status(200).json({
-      success: true,
-      data:    transactions,
-    });
+    res.status(200).json({ success: true, data: transactions });
   } catch (error) {
     console.error('getTransactions error:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch transactions' });

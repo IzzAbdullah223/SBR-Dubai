@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { getSavedRoutes, createSavedRoute, deleteSavedRoute } from '../controller/savedRouteController.js';
+import { verifyToken } from '../middleware/Verifytoken.js';
 
 export const savedRouteRouter = Router();
 
-// auth here later
-savedRouteRouter.get('/saved-routes', getSavedRoutes);
-savedRouteRouter.post('/saved-routes', createSavedRoute);
-savedRouteRouter.delete('/saved-routes/:id', deleteSavedRoute);
+savedRouteRouter.get('/saved-routes',     verifyToken, getSavedRoutes);
+savedRouteRouter.post('/saved-routes',    verifyToken, createSavedRoute);
+savedRouteRouter.delete('/saved-routes/:id', verifyToken, deleteSavedRoute);
