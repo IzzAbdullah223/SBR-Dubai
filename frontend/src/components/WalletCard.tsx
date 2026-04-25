@@ -42,9 +42,9 @@ const WalletCard = ({
   return (
     <div className="flex flex-col gap-[14px] mt-4">
 
-      {/* ── Balance card ── */}
+       
       <div className="relative bg-gradient-to-br from-[#0a1628] to-[#1a3461] rounded-[14px] p-5 flex flex-col gap-[10px] overflow-hidden">
-        {/* Decorative circle */}
+     
         <div className="absolute -top-[30px] -right-[30px] w-[120px] h-[120px] rounded-full bg-[rgba(240,165,0,0.08)] pointer-events-none" />
 
         <div className="flex items-center justify-between">
@@ -73,7 +73,7 @@ const WalletCard = ({
         </div>
       </div>
 
-      {/* ── Top-up row ── */}
+    
       <div className="flex gap-[10px] items-end">
         <div className="flex-1 flex flex-col gap-[6px]">
           <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.6px]">
@@ -99,8 +99,7 @@ const WalletCard = ({
           {recharging ? 'Recharging...' : 'Top Up'}
         </button>
       </div>
-
-      {/* ── Error ── */}
+ 
       {walletError && (
         <p className="flex items-center gap-[5px] text-[12px] text-red-500 m-0">
           <AlertCircle size={12} /> {walletError}

@@ -107,7 +107,7 @@ const BusStopCard = ({
         )}
       </div>
 
-      {/*  conditional rendering loading*/}
+   
       {loadingStop ? (
         <div className="flex justify-center py-4">
           <div className="w-[18px] h-[18px] border-2 border-gray-200 border-t-[#f0a500] rounded-full animate-spin" />
@@ -115,7 +115,7 @@ const BusStopCard = ({
       ) : (
         <div className="flex flex-col gap-3">
 
-          {/* depratur board */}
+          
           {stop.routes && stop.routes.length > 0 && (
             <div className="flex flex-col gap-[6px]">
               <p className="m-0 text-[11px] font-bold uppercase tracking-[0.6px] text-gray-400 flex items-center gap-[5px]">

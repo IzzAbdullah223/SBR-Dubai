@@ -71,7 +71,7 @@ const SavedRoutes = ({
     <div className="mb-[10px]">
       <div className="bg-white border-[1.5px] border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(10,22,40,0.08)] animate-[panelOpen_0.22s_ease]">
 
-        {/* Header */}
+      
         <div className="flex items-center justify-between px-4 pt-[14px] pb-[10px] border-b-[1.5px] border-gray-200">
           <div className="flex items-center gap-2">
             <div className="w-[30px] h-[30px] bg-gradient-to-br from-[#0a1628] to-[#1a3a6e] rounded-[9px] flex items-center justify-center">
@@ -94,7 +94,7 @@ const SavedRoutes = ({
           </button>
         </div>
 
-        {/* Not logged in */}
+       
         {!user && (
           <div className="flex flex-col items-center px-5 py-7 text-center gap-[6px]">
             <div className="text-[36px] mb-1 leading-none">🔖</div>
@@ -107,7 +107,7 @@ const SavedRoutes = ({
           </div>
         )}
 
-        {/* Loading */}
+      
         {user && loading && (
           <div className="flex items-center gap-[10px] px-4 py-5">
             <div className="w-[15px] h-[15px] border-2 border-gray-200 border-t-2 border-t-gray-900 rounded-full animate-spin flex-shrink-0" />
@@ -115,7 +115,7 @@ const SavedRoutes = ({
           </div>
         )}
 
-        {/* Empty */}
+         
         {user && !loading && savedRoutes.length === 0 && (
           <div className="flex flex-col items-center px-5 py-7 text-center gap-[6px]">
             <div className="text-[36px] mb-1 leading-none">🗺️</div>
@@ -128,7 +128,7 @@ const SavedRoutes = ({
           </div>
         )}
 
-        {/* List */}
+        
         {user && !loading && savedRoutes.length > 0 && (
           <div className="max-h-[260px] overflow-y-auto p-2 flex flex-col gap-1 [&::-webkit-scrollbar]:w-[3px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full">
             {savedRoutes.map((route) => (
@@ -158,7 +158,7 @@ const SavedRoutes = ({
                   className="text-gray-400 flex-shrink-0 transition-all duration-[180ms] group-hover:text-[#f0a500] group-hover:translate-x-[2px]"
                 />
 
-                {/* Delete button */}
+              
                 <button
                   onClick={(e) => { e.stopPropagation(); onDelete(route.id); }}
                   title="Remove"

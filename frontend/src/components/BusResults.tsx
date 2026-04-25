@@ -95,7 +95,7 @@ const BusResults = ({
                   : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-yellow-400 hover:shadow-[0_6px_20px_rgba(240,165,0,0.12)] hover:-translate-y-0.5'
                 }`}
             >
-              {/* Save button */}
+             
               {user && onSaveJourney && (
                 <button
                   onClick={e => { e.stopPropagation(); onSaveJourney() }}
@@ -117,7 +117,7 @@ const BusResults = ({
                 </button>
               )}
 
-              {/* Top row */}
+            
               <div className="flex items-center gap-2 mb-2.5 pr-10 pl-1">
                 <div
                   className="min-w-[54px] h-[50px] px-2.5 flex items-center justify-center text-white text-[13px] font-extrabold rounded-xl shrink-0 text-center"
@@ -145,14 +145,14 @@ const BusResults = ({
                 </div>
               </div>
 
-              {/* TOPSIS label */}
+   
               {label.text && (
                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold mb-2 ${getLabelStyle(label.color)}`}>
                   {label.text}
                 </span>
               )}
 
-              {/* Criteria grid */}
+         
               <div className="grid grid-cols-2 gap-1.5 mb-2.5">
                 {[
                   { icon: <Navigation size={15} color="#667eea" />, label: 'Departs',   value: bus.departureTime || `${bus.arrivalTime} min` },
@@ -172,7 +172,7 @@ const BusResults = ({
                   </div>
                 ))}
 
-                {/* Fare */}
+               
                 <div className={`flex items-center gap-1.5 px-2.5 py-2 rounded-lg
                   ${isSelected ? 'bg-white/10' : 'bg-gray-50 dark:bg-gray-700/50'}`}>
                   <CreditCard size={15} color="#4CAF50" />
@@ -183,7 +183,7 @@ const BusResults = ({
                   </div>
                 </div>
 
-                {/* Balance warning */}
+               
                 {walletBalance !== null && walletBalance < (bus.nolFare ?? bus.cost) && (
                   <div className="col-span-2 flex items-center gap-1.5 px-2.5 py-2 rounded-lg bg-red-500/8 border border-red-500/25">
                     <DollarSign size={13} color="#ef4444" />
@@ -194,7 +194,7 @@ const BusResults = ({
                 )}
               </div>
 
-              {/* Upcoming departures */}
+               
               {upcomingDepartures && upcomingDepartures.length > 1 && (
                 <div className={`flex flex-col gap-1.5 px-3 py-2.5 rounded-lg mb-3 border
                   ${isSelected ? 'bg-white/8 border-white/15' : 'bg-[#667eea]/6 border-[#667eea]/15'}`}>
@@ -221,18 +221,18 @@ const BusResults = ({
                 </div>
               )}
 
-              {/* Timeline */}
+         
               {isSelected && (
                 <div className="mt-3.5 pt-3.5 border-t border-white/10 flex flex-col">
                   {[
                     {
-                      dot: '🚶', dotClass: 'bg-yellow-400/15',
+                      dot: 'iconhere', dotClass: 'bg-yellow-400/15',
                       title: `Walk to ${originStop?.name}`,
                       sub:   `${bus.walkingDistance} km · ${bus.walkingTime} min`,
                       time:  null,
                     },
                     {
-                      dot: '🚌', dotClass: 'bg-[#667eea]/15',
+                      dot: 'iconhere', dotClass: 'bg-[#667eea]/15',
                       title: `Board ${bus.journeyType === 'transfer' ? leg1?.routeNumber : bus.routeNumber}`,
                       sub:   `${bus.journeyType === 'transfer' ? leg1?.routeName : bus.routeName}${
                         bus.journeyType === 'transfer' && leg1?.duration
@@ -242,13 +242,13 @@ const BusResults = ({
                       time: bus.departureTime,
                     },
                     ...(bus.journeyType === 'transfer' && transferStop ? [{
-                      dot: '🔄', dotClass: 'bg-teal-500/15',
+                      dot: 'iconhere', dotClass: 'bg-teal-500/15',
                       title: `Transfer at ${transferStop?.name}`,
                       sub:   `Board ${leg2?.routeNumber}${leg2?.duration ? ` · ${Math.round(leg2.duration)} min` : ''}`,
                       time:  leg2?.departureTime ?? null,
                     }] : []),
                     {
-                      dot: '📍', dotClass: 'bg-green-500/15',
+                      dot: 'iconhere', dotClass: 'bg-green-500/15',
                       title: `Arrive at ${destinationStop?.name}`,
                       sub:   `Total journey: ${totalJourney} min`,
                       time:  (bus.destinationArrivalTime as string) ?? null,
@@ -273,7 +273,7 @@ const BusResults = ({
                 </div>
               )}
 
-              {/* Select button */}
+             
               <button
                 className={`w-full py-2.5 rounded-lg text-[13px] font-bold border-2 transition-all duration-200
                   ${isSelected

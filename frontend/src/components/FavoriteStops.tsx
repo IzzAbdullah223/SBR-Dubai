@@ -128,7 +128,7 @@ const FavoriteStops = ({
                   </span>
                 </div>
 
-                {/* Delete button */}
+                
                 <button
                   onClick={(e) => { e.stopPropagation(); onDelete(stop.stopId); }}
                   title="Remove"

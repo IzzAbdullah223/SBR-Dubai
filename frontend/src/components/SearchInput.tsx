@@ -146,7 +146,7 @@ const SearchInput = ({
 
       <div className="relative">
 
-        {/* ── Pinned stop pill ── */}
+        
         {pinnedStop ? (
           <div className="flex items-center gap-2 px-3.5 py-3 border-2 border-teal-500 rounded-lg bg-teal-500/8 min-h-[48px]">
             <MapPin size={13} className="text-teal-500 shrink-0" />
@@ -207,7 +207,7 @@ const SearchInput = ({
                       onClick={() => handleSelectSuggestion(s)}
                       className="flex items-start gap-3 px-3.5 py-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors"
                     >
-                      <span className="text-base shrink-0 mt-0.5 opacity-70">📍</span>
+                      <span className="text-base shrink-0 mt-0.5 opacity-70">iconhere</span>
                       <div className="flex-1 min-w-0">
                         <div className="text-[13px] font-semibold text-gray-900 dark:text-white truncate">{main}</div>
                         <div className="text-xs text-gray-400 truncate">{sub || s.type}</div>
