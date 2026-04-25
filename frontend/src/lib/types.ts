@@ -19,47 +19,53 @@ export const signUpSchema = z.object({
 export type LoginFormData  = z.infer<typeof loginSchema>
 export type SignUpFormData = z.infer<typeof signUpSchema>
 
-
-
-
 export interface User {
-  id: number
-  name: string
-  email: string
-  phone?: string
-  preferences: {
-    language: string
-    theme: string
+  id:           number
+  name:         string
+  email:        string
+  phone?:       string
+  preferences:  {
+    language:     string
+    theme:        string
     walkingSpeed: number
     optimization: string
   }
   favoriteStops: any[]
 }
 
-
-
 export interface Bus {
-  busId: string
-  routeNumber: string
-  routeName: string
-  routeType: string
-  color: string
-  arrivalTime: number
-  travelTime: number
-  cost: number
-  nolFare: number
-  cashFare: number
-  walkingDistance: number
-  walkingTime: number
-  transfers: number
-  departureTime: string
-  departureTime24: string
+  busId:            string
+  routeNumber:      string
+  routeName:        string
+  routeType:        string
+  color:            string
+  arrivalTime:      number
+  travelTime:       number
+  cost:             number
+  nolFare:          number
+  cashFare:         number
+  walkingDistance:  number
+  walkingTime:      number
+  transfers:        number
+  departureTime:    string
+  departureTime24:  string
   totalJourneyTime: number
-  journeyType: 'direct' | 'transfer'
-  score?: number
-  [key: string]: unknown
+  journeyType:      'direct' | 'transfer'
+  score?:           number
+  [key: string]:    unknown
 }
 
+export interface BusResultsProps {
+  buses:               Bus[]
+  onSelectBus:         (bus: Bus) => void
+  selectedBus:         Bus | null
+  loading:             boolean
+  onSaveJourney:       () => void
+  isSavingJourney:     boolean
+  journeyAlreadySaved: boolean
+  user:                User | null
+  walletBalance?:      number | null
+}
 
 export interface Coordinate {
   lat: number
@@ -83,16 +89,15 @@ export interface SavedRoute {
   createdAt:   string
 }
 
-
 export interface BusStop {
-  stopId:    string
-  name:      string
-  lat:       number
-  lng:       number
-  routes?:   string[]
+  stopId:     string
+  name:       string
+  lat:        number
+  lng:        number
+  routes?:    string[]
   amenities?: string[]
-  type?:     string
-  status?:   string
+  type?:      string
+  status?:    string
 }
 
 export interface FavoriteStop {
@@ -117,21 +122,32 @@ export interface PinnedStop {
   lng:    number
 }
 
-export interface SavedRoute {
-  originName: string
-  originLat:  number
-  originLng:  number
-  destName:   string
-  destLat:    number
-  destLng:    number
-}
-
-
 export interface Wallet {
-  balance:      number
-  cardNumber:   string | null
-  isBalanceLow: boolean
+  balance:        number
+  cardNumber:     string | null
+  isBalanceLow:   boolean
   totalRecharges: number
   totalSpent:     number
   tripCount:      number
+}
+
+export interface Suggestion {
+  place_id:     string
+  display_name: string
+  name:         string
+  lat:          number
+  lng:          number
+  type:         string
+}
+
+
+export interface Departure {
+  minsFromNow: number;
+  formatted: string;
+}
+
+export interface RouteOnStop {
+  routeNumber: string;
+  color?: string;
+  schedule?: { weekday?: { frequency?: number } };
 }

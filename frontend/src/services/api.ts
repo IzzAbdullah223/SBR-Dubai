@@ -152,7 +152,41 @@ updatePreferences: async (optimizationMode: string) => {
   })
   return handleResponse(res)
 },
-  
+  updateProfile: async (data: { name: string; email: string; phone: string }) => {
+    const res = await fetch(`${BASE_URL}/api/settings/profile`, {
+      method:  'PATCH',
+      headers: authHeaders(),
+      body:    JSON.stringify(data),
+    })
+    return handleResponse(res)
+  },
+
+  changePassword: async (data: { currentPassword: string; newPassword: string }) => {
+    const res = await fetch(`${BASE_URL}/api/settings/password`, {
+      method:  'PATCH',
+      headers: authHeaders(),
+      body:    JSON.stringify(data),
+    })
+    return handleResponse(res)
+  },
+
+  clearSavedRoutes: async () => {
+    const res = await fetch(`${BASE_URL}/api/settings/saved-routes`, {
+      method:  'DELETE',
+      headers: authHeaders(),
+    })
+    return handleResponse(res)
+  },
+
+  deleteAccount: async (password: string) => {
+    const res = await fetch(`${BASE_URL}/api/settings/account`, {
+      method:  'DELETE',
+      headers: authHeaders(),
+      body:    JSON.stringify({ password }),
+    })
+    return handleResponse(res)
+  },
+
 }
 
 export const walletAPI = {

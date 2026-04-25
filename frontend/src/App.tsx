@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import useAuth from './hooks/useAuth'
+import Home     from './pages/Home'
+import Settings from './pages/Settings'
+import useAuth   from './hooks/useAuth'
+import useWallet from './hooks/useWallet'
 
 function App() {
   const {
@@ -18,24 +21,56 @@ function App() {
     closeSignUp,
   } = useAuth()
 
+  const {
+    wallet,
+    loadingWallet,
+    recharging,
+    walletError,
+    setWalletError,
+    recharge,
+    walletBalance,
+  } = useWallet(user)
+
   return (
-    <div className={theme} data-theme={theme}>
+    <div data-theme={theme}>
       <BrowserRouter>
         <Routes>
-          {/* Home — public */}
           <Route
             path="/"
             element={
-              <div>Home page coming soon</div>
+              <Home
+                user={user}
+                theme={theme}
+                showLogin={showLogin}
+                showSignUp={showSignUp}
+                handleLoginSuccess={handleLoginSuccess}
+                handleSwitchToSignUp={handleSwitchToSignUp}
+                handleSwitchToLogin={handleSwitchToLogin}
+                openLogin={openLogin}
+                openSignUp={openSignUp}
+                closeLogin={closeLogin}
+                closeSignUp={closeSignUp}
+                walletBalance={walletBalance}
+              />
             }
           />
-
-          {/* Settings — protected */}
           <Route
             path="/settings"
             element={
               user
-                ? <div>Settings page coming soon</div>
+                ? <Settings
+                    user={user}
+                    onUserUpdate={handleLoginSuccess}
+                    onLogout={handleLogout}
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                    wallet={wallet}
+                    loadingWallet={loadingWallet}
+                    recharging={recharging}
+                    walletError={walletError}
+                    setWalletError={setWalletError}
+                    recharge={recharge}
+                  />
                 : <Navigate to="/" replace />
             }
           />
