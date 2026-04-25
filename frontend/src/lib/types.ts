@@ -35,3 +35,103 @@ export interface User {
   }
   favoriteStops: any[]
 }
+
+
+
+export interface Bus {
+  busId: string
+  routeNumber: string
+  routeName: string
+  routeType: string
+  color: string
+  arrivalTime: number
+  travelTime: number
+  cost: number
+  nolFare: number
+  cashFare: number
+  walkingDistance: number
+  walkingTime: number
+  transfers: number
+  departureTime: string
+  departureTime24: string
+  totalJourneyTime: number
+  journeyType: 'direct' | 'transfer'
+  score?: number
+  [key: string]: unknown
+}
+
+
+export interface Coordinate {
+  lat: number
+  lng: number
+}
+
+export interface ShapeResult {
+  coordinates: Coordinate[]
+  trimRatio:   number
+}
+
+export interface SavedRoute {
+  id:          number
+  routeName:   string
+  originName:  string
+  originLat:   number
+  originLng:   number
+  destName:    string
+  destLat:     number
+  destLng:     number
+  createdAt:   string
+}
+
+
+export interface BusStop {
+  stopId:    string
+  name:      string
+  lat:       number
+  lng:       number
+  routes?:   string[]
+  amenities?: string[]
+  type?:     string
+  status?:   string
+}
+
+export interface FavoriteStop {
+  id:      number
+  stopId:  string
+  name:    string
+  lat:     number
+  lng:     number
+  savedAt: string
+}
+
+export interface Location {
+  lat:  number
+  lng:  number
+  name: string
+}
+
+export interface PinnedStop {
+  stopId: string
+  name:   string
+  lat:    number
+  lng:    number
+}
+
+export interface SavedRoute {
+  originName: string
+  originLat:  number
+  originLng:  number
+  destName:   string
+  destLat:    number
+  destLng:    number
+}
+
+
+export interface Wallet {
+  balance:      number
+  cardNumber:   string | null
+  isBalanceLow: boolean
+  totalRecharges: number
+  totalSpent:     number
+  tripCount:      number
+}
