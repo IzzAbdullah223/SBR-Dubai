@@ -1,4 +1,10 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import 'tailwindcss';
+@variant dark (&:is(.dark *));
+
+* {
+  font-family: 'DM Sans', sans-serif;
+}
 
 @layer utilities {
   @keyframes slideIn {
@@ -8,7 +14,6 @@
   .animate-slideIn {
     animation: slideIn 0.2s ease;
   }
-
   @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -16,7 +21,6 @@
   .animate-fadeIn {
     animation: fadeIn 0.2s ease;
   }
-
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }

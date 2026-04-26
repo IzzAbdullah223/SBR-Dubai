@@ -20,10 +20,10 @@ const Navbar = ({ onSignUpClick, onLoginClick, user }: NavbarProps) => {
           <Bus size={18} />
         </div>
         <span className="font-bold text-[15px] text-white tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
-          SBR Dubai
+          Smart Bus Planner
         </span>
         <div className="bg-yellow-400/10 border border-yellow-400/25 text-yellow-300 text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide">
-          BETA
+          Dubai RTA
         </div>
       </div>
 
