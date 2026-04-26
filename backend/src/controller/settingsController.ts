@@ -1,5 +1,5 @@
 import { type Response } from 'express';
-import { type AuthRequest } from '../middleware/Verifytoken.js';
+import { type AuthRequest } from '../middleware/verifyToken.js';
 import * as db from '../db/queries.js';
 import bcrypt from 'bcryptjs';
  

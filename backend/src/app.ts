@@ -9,7 +9,7 @@ import { shapeRouter } from './routes/shapeRoutes.js';
 import { savedRouteRouter } from './routes/savedRoutes.js';
 import { walletRouter } from './routes/walletRoutes.js';
 import { settingsRouter } from './routes/settingRoutes.js';
-import { authRouter } from './routes/Authroutes.js';
+import { authRouter } from './routes/authRoutes.js';
 
 const app = express();
 

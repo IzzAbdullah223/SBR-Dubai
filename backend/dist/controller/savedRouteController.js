@@ -1,9 +1,9 @@
 import {} from 'express';
+import {} from '../middleware/verifyToken.js';
 import * as db from '../db/queries.js';
 export const getSavedRoutes = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const routes = await db.getSavedRoutesByUserId(userId);
         res.status(200).json({
             success: true,
@@ -13,49 +13,29 @@ export const getSavedRoutes = async (req, res) => {
     }
     catch (error) {
         console.error('getSavedRoutes error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to fetch saved routes.',
-        });
+        res.status(500).json({ success: false, message: 'Failed to fetch saved routes.' });
     }
 };
-// userId comes from JWT token (req.user.id), never from the request body
 export const createSavedRoute = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
-        const { routeName, origin, destination } = req.body;
-        //  validate
-        if (!routeName || !origin || !destination) {
+        const userId = req.userId;
+        const { routeName, originName, originLat, originLng, destName, destLat, destLng } = req.body;
+        if (!routeName || !originName || !originLat || !originLng || !destName || !destLat || !destLng) {
             res.status(400).json({
                 success: false,
-                message: 'routeName, origin, and destination are required.',
-            });
-            return;
-        }
-        if (!origin.name || !origin.lat || !origin.lng) {
-            res.status(400).json({
-                success: false,
-                message: 'origin must include name, lat, and lng.',
-            });
-            return;
-        }
-        if (!destination.name || !destination.lat || !destination.lng) {
-            res.status(400).json({
-                success: false,
-                message: 'destination must include name, lat, and lng.',
+                message: 'routeName, originName, originLat, originLng, destName, destLat and destLng are required.',
             });
             return;
         }
         const newRoute = await db.createSavedRoute({
             userId,
             routeName,
-            originName: origin.name,
-            originLat: origin.lat,
-            originLng: origin.lng,
-            destName: destination.name,
-            destLat: destination.lat,
-            destLng: destination.lng,
+            originName,
+            originLat,
+            originLng,
+            destName,
+            destLat,
+            destLng,
         });
         res.status(201).json({
             success: true,
@@ -72,17 +52,12 @@ export const createSavedRoute = async (req, res) => {
             return;
         }
         console.error('createSavedRoute error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to save route.',
-        });
+        res.status(500).json({ success: false, message: 'Failed to save route.' });
     }
 };
-// only the owner can delete their own saved routes
 export const deleteSavedRoute = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const id = parseInt(req.params['id']);
         if (isNaN(id)) {
             res.status(400).json({ success: false, message: 'Invalid route ID.' });
@@ -93,23 +68,16 @@ export const deleteSavedRoute = async (req, res) => {
             res.status(404).json({ success: false, message: 'Saved route not found.' });
             return;
         }
-        // ownership check — users can only delete their own saved routes
         if (route.userId !== userId) {
             res.status(403).json({ success: false, message: 'Not authorised to delete this route.' });
             return;
         }
         await db.deleteSavedRoute(id);
-        res.status(200).json({
-            success: true,
-            message: 'Route deleted successfully.',
-        });
+        res.status(200).json({ success: true, message: 'Route deleted successfully.' });
     }
     catch (error) {
         console.error('deleteSavedRoute error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to delete route.',
-        });
+        res.status(500).json({ success: false, message: 'Failed to delete route.' });
     }
 };
 //# sourceMappingURL=savedRouteController.js.map

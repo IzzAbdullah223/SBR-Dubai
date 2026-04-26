@@ -1,10 +1,10 @@
 import {} from 'express';
+import {} from '../middleware/verifyToken.js';
 import * as db from '../db/queries.js';
 import bcrypt from 'bcryptjs';
 export const getProfile = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const user = await db.getUserById(userId);
         if (!user) {
             res.status(404).json({ success: false, message: 'User not found' });
@@ -18,11 +18,9 @@ export const getProfile = async (req, res) => {
     }
 };
 export const updateProfile = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { name, email, phone } = req.body;
-        // see if someone alread has the email
         if (email) {
             const existing = await db.getUserByEmail(email);
             if (existing && existing.id !== userId) {
@@ -47,9 +45,8 @@ export const updateProfile = async (req, res) => {
     }
 };
 export const changePassword = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { currentPassword, newPassword } = req.body;
         if (!currentPassword || !newPassword) {
             res.status(400).json({ success: false, message: 'Both current and new password are required' });
@@ -79,9 +76,8 @@ export const changePassword = async (req, res) => {
     }
 };
 export const updatePreferences = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { optimizationMode } = req.body;
         if (!optimizationMode) {
             res.status(400).json({ success: false, message: 'No optimization mode provided' });
@@ -105,9 +101,8 @@ export const updatePreferences = async (req, res) => {
     }
 };
 export const updateLanguage = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { language } = req.body;
         if (!['en', 'ar'].includes(language)) {
             res.status(400).json({ success: false, message: 'Invalid language' });
@@ -126,9 +121,8 @@ export const updateLanguage = async (req, res) => {
     }
 };
 export const getFavoriteStops = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const stops = await db.getFavoriteStopsByUserId(userId);
         res.status(200).json({ success: true, data: stops });
     }
@@ -138,15 +132,13 @@ export const getFavoriteStops = async (req, res) => {
     }
 };
 export const addFavoriteStop = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { stopId, name, lat, lng } = req.body;
         if (!stopId || !name || !lat || !lng) {
             res.status(400).json({ success: false, message: 'stopId, name, lat and lng are required' });
             return;
         }
-        // no duplicate
         const existing = await db.getFavoriteStopsByUserId(userId);
         const already = existing.some(s => s.stopId === stopId);
         if (already) {
@@ -163,9 +155,8 @@ export const addFavoriteStop = async (req, res) => {
     }
 };
 export const removeFavoriteStop = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const stopId = req.params['stopId'];
         await db.removeFavoriteStop(userId, stopId);
         const stops = await db.getFavoriteStopsByUserId(userId);
@@ -177,9 +168,8 @@ export const removeFavoriteStop = async (req, res) => {
     }
 };
 export const clearSavedRoutes = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const deleted = await db.clearSavedRoutesByUserId(userId);
         res.status(200).json({ success: true, deleted });
     }
@@ -189,9 +179,8 @@ export const clearSavedRoutes = async (req, res) => {
     }
 };
 export const deleteAccount = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const { password } = req.body;
         if (!password) {
             res.status(400).json({ success: false, message: 'Password is required to delete account' });

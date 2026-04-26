@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getSavedRoutes, createSavedRoute, deleteSavedRoute } from '../controller/savedRouteController.js';
-import { verifyToken } from '../middleware/Verifytoken.js';
+import { verifyToken } from '../middleware/verifyToken.js';
 
 export const savedRouteRouter = Router();
 

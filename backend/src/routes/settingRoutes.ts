@@ -11,7 +11,7 @@ import {
   addFavoriteStop,
   removeFavoriteStop,
 } from '../controller/settingsController.js';
-import { verifyToken } from '../middleware/Verifytoken.js';
+import { verifyToken } from '../middleware/verifyToken.js';
 
 export const settingsRouter = Router();
 

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getWallet, rechargeWallet, getTransactions } from '../controller/walletController.js';
-import { verifyToken } from '../middleware/Verifytoken.js';
+import { verifyToken } from '../middleware/verifyToken.js';
 
 export const walletRouter = Router();
 

@@ -1,11 +1,9 @@
 import {} from 'express';
+import {} from '../middleware/verifyToken.js';
 import * as db from '../db/queries.js';
-// 
-// auto-creates wallet on first access — user doesn't need to do anything
 export const getWallet = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         let wallet = await db.getWalletByUserId(userId);
         if (!wallet) {
             wallet = await db.createWallet(userId);
@@ -32,13 +30,12 @@ export const getWallet = async (req, res) => {
     }
     catch (error) {
         console.error('getWallet error:', error);
-        res.status(500).json({ success: false, message: 'Failed to fetch wallet', });
+        res.status(500).json({ success: false, message: 'Failed to fetch wallet' });
     }
 };
 export const rechargeWallet = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const parsed = parseFloat(req.body.amount);
         if (!parsed || parsed <= 0) {
             res.status(400).json({ success: false, message: 'Amount must be a positive number' });
@@ -79,9 +76,8 @@ export const rechargeWallet = async (req, res) => {
     }
 };
 export const getTransactions = async (req, res) => {
-    // auth here later
     try {
-        const userId = req.user?.id;
+        const userId = req.userId;
         const limit = parseInt(req.query['limit']) || 10;
         const skip = parseInt(req.query['skip']) || 0;
         const wallet = await db.getWalletByUserId(userId);
@@ -90,10 +86,7 @@ export const getTransactions = async (req, res) => {
             return;
         }
         const transactions = await db.getTransactionsByWalletId(wallet.id, limit, skip);
-        res.status(200).json({
-            success: true,
-            data: transactions,
-        });
+        res.status(200).json({ success: true, data: transactions });
     }
     catch (error) {
         console.error('getTransactions error:', error);
