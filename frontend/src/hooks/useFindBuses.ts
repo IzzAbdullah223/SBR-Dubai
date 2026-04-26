@@ -97,7 +97,7 @@ const useFindBuses = () => {
     setStats(null)
   }, [])
 
-  return { buses, loading, error, errorType, stats, findBuses, clearResults }
+  return { buses,setBuses, loading, error, errorType, stats, findBuses, clearResults }
 }
 
 export default useFindBuses

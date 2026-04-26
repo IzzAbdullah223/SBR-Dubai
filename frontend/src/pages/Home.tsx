@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import MapView from '../components/MapView'
+import MapView          from '../components/MapView'
 import SearchInput      from '../components/SearchInput'
 import BusResults       from '../components/BusResults'
 import SavedRoutes      from '../components/SavedRoutes'
@@ -70,8 +70,9 @@ const Home = ({
     resetLocations,
   } = useLocationPicker()
 
-  const { buses, loading, error, errorType, findBuses, clearResults } = useFindBuses()
-  const { optimizationMode, handleModeChange } = useOptimizationMode(user)
+ 
+  const { buses, setBuses, loading, error, errorType, findBuses, clearResults } = useFindBuses()
+  const { optimizationMode, handleModeChange, ranking } = useOptimizationMode(user, buses, setBuses)
 
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null)
   const { shapeCoordinates, shapeCoordinatesLeg2 } = useShape(selectedBus)
@@ -88,6 +89,7 @@ const Home = ({
   const isSavingJourney     = !!(origin && destination && savingKey === `${origin.name}__${destination.name}`)
   const journeyAlreadySaved = !!(origin && destination && isJourneySaved(origin.lat, origin.lng, destination.lat, destination.lng))
 
+ 
   useEffect(() => {
     if (buses?.length > 0) setSelectedBus(buses[0] ?? null)
   }, [buses])
@@ -116,8 +118,8 @@ const Home = ({
     clearResults()
   }
 
-  const handleSelectBus            = (bus: Bus)  => { setSelectedBus(bus); clearStop() }
-  const handleSaveJourney          = async ()    => { if (!origin || !destination) return; await saveRoute(origin, destination) }
+  const handleSelectBus            = (bus: Bus)   => { setSelectedBus(bus); clearStop() }
+  const handleSaveJourney          = async ()     => { if (!origin || !destination) return; await saveRoute(origin, destination) }
   const handleSelectSavedJourney   = (route: any) => { fillFromSavedRoute(route); if (showSaved) toggleSavedPanel() }
   const handleFavoriteStopClick    = (stop: any)  => selectStop(stop)
   const handleSetStopAsOrigin      = (stop: any)  => { pinStopAsOrigin(stop);      clearStop() }
@@ -140,8 +142,8 @@ const Home = ({
 
       <div className="flex flex-1 overflow-hidden min-h-0">
 
-        {/* ── Left Panel ── */}
-        <div className="w-[460px] min-w-[460px] bg-gray-50 flex flex-col overflow-y-auto flex-shrink-0 border-r border-gray-200 scrollbar-thin [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full">
+        {/*  left panel */}
+        <div className="w-[460px] min-w-[460px] bg-gray-50 flex flex-col overflow-y-auto flex-shrink-0 border-r border-gray-200 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full">
 
           <div className="px-6 pt-6 pb-4 flex-shrink-0">
 
@@ -191,7 +193,7 @@ const Home = ({
             />
           </div>
 
-          {/* ── Optimization Mode ── */}
+          {/*   optimization mode  */}
           <div className="mx-6 mb-4 p-[14px_16px] bg-white border-[1.5px] border-gray-200 rounded-xl flex-shrink-0">
             <p className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.5px] m-0 mb-[10px]">
               Optimize for
@@ -201,7 +203,8 @@ const Home = ({
                 <button
                   key={value}
                   onClick={() => handleModeChange(value)}
-                  className={`flex flex-col items-center gap-1 py-2 px-1 border-[1.5px] rounded-xl cursor-pointer transition-all duration-[180ms]
+                  disabled={ranking}
+                  className={`flex flex-col items-center gap-1 py-2 px-1 border-[1.5px] rounded-xl cursor-pointer transition-all duration-[180ms] disabled:opacity-50
                     ${optimizationMode === value
                       ? 'border-[#f0a500] bg-[rgba(240,165,0,0.12)]'
                       : 'border-gray-200 bg-gray-50 hover:border-[#f0a500] hover:bg-[rgba(240,165,0,0.06)]'
@@ -225,17 +228,17 @@ const Home = ({
             )}
           </div>
 
-          {/* ── Find Buses Row ── */}
+          {/*  find buses */}
           <div className="flex gap-2 mx-6 mb-5 flex-shrink-0">
             <button
               onClick={handleFindBuses}
-              disabled={!origin || !destination || loading}
+              disabled={!origin || !destination || loading || ranking}
               className="flex-1 relative overflow-hidden py-4 px-4 bg-[#0a1628] text-white border-none rounded-xl font-['Syne'] text-[15px] font-bold cursor-pointer flex items-center justify-center gap-[10px] transition-all duration-[250ms] tracking-[0.3px] flex-shrink-0 disabled:bg-gray-300 disabled:text-gray-400 disabled:cursor-not-allowed group"
             >
               <span className="absolute left-0 top-0 h-full w-0 bg-[#f0a500] transition-[width] duration-[400ms] ease group-hover:w-full z-0" />
               <Search size={20} className="relative z-10 transition-colors duration-[400ms] group-hover:text-[#0a1628]" />
               <span className="relative z-10 transition-colors duration-[400ms] group-hover:text-[#0a1628]">
-                {loading ? 'Searching...' : 'Find Buses'}
+                {loading ? 'Searching...' : ranking ? 'Ranking...' : 'Find Buses'}
               </span>
             </button>
 
@@ -250,7 +253,7 @@ const Home = ({
             )}
           </div>
 
-          {/* ── Errors ── */}
+          {/*  errors */}
           {inputError && (
             <div className="mx-6 mb-4 px-4 py-[14px] rounded-xl text-[14px] font-medium flex-shrink-0 leading-[1.5] bg-[rgba(255,77,109,0.08)] border border-[rgba(255,77,109,0.25)] border-l-4 border-l-red-400 text-red-500">
               {inputError}
@@ -272,14 +275,14 @@ const Home = ({
             </div>
           )}
 
-          {/* ── Bus Results ── */}
+          {/*  bus results */}
           {(buses.length > 0 || loading) && (
             <div className="px-6 pb-5 flex-shrink-0">
               <BusResults
                 buses={buses}
                 onSelectBus={handleSelectBus}
                 selectedBus={selectedBus}
-                loading={loading}
+                loading={loading || ranking}
                 onSaveJourney={handleSaveJourney}
                 isSavingJourney={isSavingJourney}
                 journeyAlreadySaved={journeyAlreadySaved}
@@ -291,7 +294,7 @@ const Home = ({
 
         </div>
 
-        {/* ── Right Panel (Map) ── */}
+        {/* right panel the map */}
         <div className="flex-1 relative overflow-hidden min-w-0">
           <MapView
             origin={origin ?? { lat: MAP_CONFIG.DEFAULT_CENTER.lat, lng: MAP_CONFIG.DEFAULT_CENTER.lng }}
@@ -316,10 +319,10 @@ const Home = ({
 
       </div>
 
-      {/* ── Auth Modals ── */}
-    <Modal isOpen={showSignUp} onClose={closeSignUp}>
+      {/* open close signup/login modal */}
+      <Modal isOpen={showSignUp} onClose={closeSignUp}>
         <SignUp onLoginSuccess={handleLoginSuccess} />
-    </Modal>
+      </Modal>
       <Modal isOpen={showLogin} onClose={closeLogin}>
         <Login onLoginSuccess={handleLoginSuccess} onSwitchToSignUp={handleSwitchToSignUp} />
       </Modal>

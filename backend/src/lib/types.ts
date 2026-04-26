@@ -17,20 +17,13 @@ export const FindBusesSchema = z.object({
 
 
 export interface Weights {
-  time: number
-  cost: number
-  walkingDistance: number
-  transfers: number
+  totalJourneyTime: number
+  cost:             number
+  walkingDistance:  number
+  transfers:        number
 }
 
-export interface NormalizedWeights {
-  arrivalTime: number
-  travelTime: number
-  cost: number
-  walkingDistance: number
-  transfers: number
-}
-
+ 
 export interface Bus {
   busId: string
   routeNumber: string

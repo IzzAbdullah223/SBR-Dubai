@@ -2,7 +2,7 @@ import { getStopsByStopIds } from '../db/queries.js'
 import { calculateWalkingDistance } from './geoCalculator.js'
 import * as timeHelper from './timeHelper.js'
 import * as scheduleGen from './scheduleGenerator.js'
-import type { Bus,  DirectRoute, TransferRoute, Schedule } from '../lib/types.js'
+import type { Bus, DirectRoute, TransferRoute, Schedule } from '../lib/types.js'
 import type { RouteWithStops } from '../db/queries.js'
 
 const DEFAULT_SCHEDULE: Schedule = {
@@ -11,10 +11,8 @@ const DEFAULT_SCHEDULE: Schedule = {
 }
 
 const getRouteSchedule = (route: RouteWithStops): Schedule => {
-  return (route.schedule as unknown as  Schedule) || DEFAULT_SCHEDULE
+  return (route.schedule as unknown as Schedule) || DEFAULT_SCHEDULE
 }
-
- 
 
 export const generateDirectBuses = (
   routeInfo:   DirectRoute,
@@ -52,30 +50,38 @@ export const generateDirectBuses = (
 
   arrivalTimes.forEach((arrival, i) => {
     const busId = `${route.routeNumber}-${Date.now()}-${i}`
+
     const totalJourneyTime = scheduleGen.calculateTotalJourneyTime(
       walkingTime,
       arrival.minutesFromNow,
       routeTravelTime
     )
 
+    // clock time when user arrives at destination
+    const destinationArrivalDate   = timeHelper.addMinutes(dubaiTime, totalJourneyTime)
+    const destinationArrivalTime   = timeHelper.formatTime(destinationArrivalDate)
+    const destinationArrivalTime24 = timeHelper.formatTime24(destinationArrivalDate)
+
     buses.push({
       busId,
-      routeNumber:     route.routeNumber,
-      routeName:       route.name || `Route ${route.routeNumber}`,
-      routeType:       route.type || 'bus',
-      color:           route.color || '#667eea',
-      arrivalTime:     arrival.minutesFromNow,
-      travelTime:      routeTravelTime,
-      cost:            fare?.nolFare  || fare?.baseFare || 3,
-      nolFare:         fare?.nolFare  || fare?.baseFare || 3,
-      cashFare:        fare?.cashFare || (fare?.baseFare || 3) + 1,
+      routeNumber:            route.routeNumber,
+      routeName:              route.name || `Route ${route.routeNumber}`,
+      routeType:              route.type || 'bus',
+      color:                  route.color || '#667eea',
+      arrivalTime:            arrival.minutesFromNow,
+      travelTime:             routeTravelTime,
+      cost:                   fare?.nolFare  || fare?.baseFare || 3,
+      nolFare:                fare?.nolFare  || fare?.baseFare || 3,
+      cashFare:               fare?.cashFare || (fare?.baseFare || 3) + 1,
       walkingDistance,
       walkingTime,
-      transfers:       0,
-      departureTime:   arrival.formatted,
-      departureTime24: arrival.formatted24,
+      transfers:              0,
+      departureTime:          arrival.formatted,
+      departureTime24:        arrival.formatted24,
       totalJourneyTime,
-      journeyType:     'direct',
+      destinationArrivalTime,
+      destinationArrivalTime24,
+      journeyType:            'direct',
       originStop: {
         stopId: originStop.stopId,
         name:   originStop.name,
@@ -88,16 +94,14 @@ export const generateDirectBuses = (
         lat:    destStop.lat,
         lng:    destStop.lng,
       },
-      stops:           route.stops || [],
-      lineId:          route.lineId      || null,
-      lineIdReturn:    route.lineIdReturn || null,
+      stops:        route.stops || [],
+      lineId:       route.lineId      || null,
+      lineIdReturn: route.lineIdReturn || null,
     } as Bus)
   })
 
   return buses
 }
-
- 
 
 export const generateTransferBuses = async (
   transferInfo:    TransferRoute,
@@ -119,14 +123,14 @@ export const generateTransferBuses = async (
   const transferStop = transferStopMap[transferStopId]
   if (!transferStop) return []
 
-  const buses: Bus[]   = []
-  const frequency1     = scheduleGen.getServiceFrequency(schedule1, dubaiTime)
+  const buses: Bus[]    = []
+  const frequency1      = scheduleGen.getServiceFrequency(schedule1, dubaiTime)
   const walkingDistance = calculateWalkingDistance(origin, originStop)
-  const walkingTime    = scheduleGen.calculateWalkingTime(walkingDistance)
-  const leg1Duration   = route1.duration || 20
-  const leg2Duration   = route2.duration || 20
+  const walkingTime     = scheduleGen.calculateWalkingTime(walkingDistance)
+  const leg1Duration    = route1.duration || 20
+  const leg2Duration    = route2.duration || 20
   const transferWaitTime = 5
-  const minDeparture   = walkingTime + 2
+  const minDeparture    = walkingTime + 2
 
   const fare1 = route1.fare as { nolFare?: number; baseFare?: number; cashFare?: number }
   const fare2 = route2.fare as { nolFare?: number; baseFare?: number; cashFare?: number }
@@ -144,23 +148,41 @@ export const generateTransferBuses = async (
 
   if (leg1Arrivals.length === 0) return buses
 
+  // ratio-based leg durations — how far into each route the relevant stop is
   const route1Stops   = route1.stops || []
   const transferIndex = route1Stops.findIndex(s => s.stopId === transferStopId)
   const transferRatio = transferIndex >= 0
     ? transferIndex / Math.max(route1Stops.length - 1, 1)
     : 0.5
 
+  const route2Stops = route2.stops || []
+  const destIndex   = route2Stops.findIndex(s => s.stopId === destStop.stopId)
+  const leg2Ratio   = destIndex >= 0
+    ? destIndex / Math.max(route2Stops.length - 1, 1)
+    : 0.5
+
+  const leg1RidingTime = Math.round(leg1Duration * transferRatio)
+  const leg2RidingTime = Math.round(leg2Duration * leg2Ratio)
+
   leg1Arrivals.forEach((leg1Arrival, i) => {
     if (isNaN(leg1Arrival.minutesFromNow)) return
 
-    const timeToTransferStop = walkingTime + leg1Duration * transferRatio
+    const timeToTransferStop = walkingTime + leg1RidingTime
     const arrivalAtTransfer  = leg1Arrival.minutesFromNow + timeToTransferStop
     const leg2DepartureMin   = Math.ceil(arrivalAtTransfer + transferWaitTime)
 
     if (isNaN(leg2DepartureMin)) return
 
     const leg2DepartureTime = timeHelper.addMinutes(dubaiTime, leg2DepartureMin)
-    const totalTime         = scheduleGen.calculateTransferTime(leg1Duration, transferWaitTime, leg2Duration)
+
+    // true door-to-door: walk + wait for bus + leg1 ride + transfer wait + leg2 ride
+    const totalJourneyTime = Math.round(
+      walkingTime + leg1Arrival.minutesFromNow + leg1RidingTime + transferWaitTime + leg2RidingTime
+    )
+
+    const destinationArrivalDate   = timeHelper.addMinutes(dubaiTime, totalJourneyTime)
+    const destinationArrivalTime   = timeHelper.formatTime(destinationArrivalDate)
+    const destinationArrivalTime24 = timeHelper.formatTime24(destinationArrivalDate)
 
     const leg1Nol  = fare1?.nolFare  || fare1?.baseFare || 3
     const leg2Nol  = fare2?.nolFare  || fare2?.baseFare || 3
@@ -176,7 +198,7 @@ export const generateTransferBuses = async (
       routeType:           'transfer',
       color:               route1.color || '#667eea',
       arrivalTime:         leg1Arrival.minutesFromNow,
-      travelTime:          totalTime,
+      travelTime:          leg1RidingTime + transferWaitTime + leg2RidingTime,
       cost:                leg1Nol + leg2Nol,
       nolFare:             leg1Nol + leg2Nol,
       cashFare:            leg1Cash + leg2Cash,
@@ -189,12 +211,14 @@ export const generateTransferBuses = async (
       leg1DepartureTime24: leg1Arrival.formatted24,
       leg2DepartureTime:   timeHelper.formatTime(leg2DepartureTime),
       leg2DepartureTime24: timeHelper.formatTime24(leg2DepartureTime),
-      totalJourneyTime:    totalTime,
+      totalJourneyTime,
+      destinationArrivalTime,
+      destinationArrivalTime24,
       journeyType:         'transfer',
       leg1: {
         routeNumber:   route1.routeNumber,
         routeName:     route1.name || `Route ${route1.routeNumber}`,
-        duration:      leg1Duration,
+        duration:      leg1RidingTime,
         cost:          leg1Nol,
         nolFare:       leg1Nol,
         cashFare:      leg1Cash,
@@ -203,7 +227,7 @@ export const generateTransferBuses = async (
       leg2: {
         routeNumber:   route2.routeNumber,
         routeName:     route2.name || `Route ${route2.routeNumber}`,
-        duration:      leg2Duration,
+        duration:      leg2RidingTime,
         cost:          leg2Nol,
         nolFare:       leg2Nol,
         cashFare:      leg2Cash,
@@ -227,31 +251,27 @@ export const generateTransferBuses = async (
         lat:    destStop.lat,
         lng:    destStop.lng,
       },
-      lineId:            route1.lineId       || null,
-      lineIdReturn:      route1.lineIdReturn  || null,
-      lineIdLeg2:        route2.lineId        || null,
-      lineIdLeg2Return:  route2.lineIdReturn  || null,
+      lineId:           route1.lineId      || null,
+      lineIdReturn:     route1.lineIdReturn || null,
+      lineIdLeg2:       route2.lineId       || null,
+      lineIdLeg2Return: route2.lineIdReturn  || null,
     } as Bus)
   })
 
   return buses
 }
 
- 
-
 export const generateAllBuses = async (
   routeData:   { directRoutes: DirectRoute[]; transferRoutes: TransferRoute[] },
   origin:      { lat: number; lng: number },
   currentTime: Date | null = null
 ): Promise<Bus[]> => {
-  const allBuses:  Bus[]  = []
-  const dubaiTime: Date   = currentTime || timeHelper.getDubaiTime()
+  const allBuses:  Bus[] = []
+  const dubaiTime: Date  = currentTime || timeHelper.getDubaiTime()
 
   if (routeData.transferRoutes.length > 0) {
     const transferStopIds = routeData.transferRoutes.map(t => t.transferStopId)
-
- 
-    const transferStops = await getStopsByStopIds(transferStopIds)
+    const transferStops   = await getStopsByStopIds(transferStopIds)
 
     const transferStopMap: Record<string, { stopId: string; name: string; lat: number; lng: number }> = {}
     transferStops.forEach(s => {

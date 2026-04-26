@@ -1,27 +1,22 @@
-import { type Bus, type Weights, type NormalizedWeights } from "../lib/types.js"
+import type { Bus } from '../lib/types.js'
 
-type Criterion = 'arrivalTime' | 'travelTime' | 'cost' | 'walkingDistance' | 'transfers'
-
-
-
-const normalizeWeights = (weights: Weights): NormalizedWeights => {
-  const total = weights.time + weights.cost + weights.walkingDistance + weights.transfers
-  return {
-    arrivalTime:    (weights.time / 2) / total,
-    travelTime:     (weights.time / 2) / total,
-    cost:            weights.cost            / total,
-    walkingDistance: weights.walkingDistance  / total,
-    transfers:       weights.transfers        / total,
-  }
+ 
+interface Weights {
+  totalJourneyTime: number
+  cost:             number
+  walkingDistance:  number
+  transfers:        number
 }
+
+type Criterion = 'totalJourneyTime' | 'cost' | 'walkingDistance' | 'transfers'
 
 export const rankBuses = (buses: Bus[], weights: Weights): Bus[] => {
   if (!buses || buses.length === 0) return []
-if (buses.length === 1) return [{ ...buses[0], score: 1.0 } as Bus]
+  if (buses.length === 1) return [{ ...buses[0], score: 1.0 } as Bus]
 
-  const criteria: Criterion[] = ['arrivalTime', 'travelTime', 'cost', 'walkingDistance', 'transfers']
-  const normalizedWeights = normalizeWeights(weights)
+  const criteria: Criterion[] = ['totalJourneyTime', 'cost', 'walkingDistance', 'transfers']
 
+ 
   const normalizedMatrix: number[][] = criteria.map(criterion => {
     const values = buses.map(bus => bus[criterion] as number)
     const denominator = Math.sqrt(values.reduce((sum, val) => sum + val * val, 0))
@@ -30,10 +25,10 @@ if (buses.length === 1) return [{ ...buses[0], score: 1.0 } as Bus]
   }) as number[][]
 
   const weightedMatrix: number[][] = criteria.map((criterion, idx) =>
-    normalizedMatrix[idx]!.map(val => val * normalizedWeights[criterion])
+    normalizedMatrix[idx]!.map(val => val * weights[criterion])
   ) as number[][]
 
-  const idealSolution: number[]         = criteria.map((_, idx) => Math.min(...weightedMatrix[idx]!))
+  const idealSolution:         number[] = criteria.map((_, idx) => Math.min(...weightedMatrix[idx]!))
   const negativeIdealSolution: number[] = criteria.map((_, idx) => Math.max(...weightedMatrix[idx]!))
 
   const distances = buses.map((_, busIdx) => {

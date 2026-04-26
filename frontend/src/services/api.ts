@@ -1,4 +1,5 @@
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+import type { Bus } from '../lib/types'
 
 const getToken = () => localStorage.getItem('token')
 
@@ -54,6 +55,15 @@ export const topsisAPI = {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ origin, destination, optimizationMode }),
+    })
+    return handleResponse(res)
+  },
+
+  rank: async (buses: Bus[], optimizationMode: string) => {
+    const res = await fetch(`${BASE_URL}/api/find-buses/rank`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ buses, optimizationMode }),
     })
     return handleResponse(res)
   },
@@ -206,6 +216,8 @@ export const walletAPI = {
     return handleResponse(res)
   },
 }
+
+
 
 
 
