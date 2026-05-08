@@ -11,7 +11,6 @@ import { MAP_CONFIG } from '../utils/constants';
 import BusStopCard from './BusStopCard';
 import type { BusStop, User, Coordinate, Bus } from '../lib/types';
 
- 
 interface Location {
   lat: number;
   lng: number;
@@ -52,13 +51,19 @@ interface LocateButtonProps {
   onError:  (msg: string) => void;
 }
 
- 
 const DUBAI_BOUNDS = { minLat: 24.7, maxLat: 25.4, minLng: 54.9, maxLng: 55.6 };
 const isInDubai = (lat: number, lng: number) =>
   lat >= DUBAI_BOUNDS.minLat && lat <= DUBAI_BOUNDS.maxLat &&
   lng >= DUBAI_BOUNDS.minLng && lng <= DUBAI_BOUNDS.maxLng;
 
- 
+const InvalidateSize = () => {
+  const map = useMap();
+  useEffect(() => {
+    setTimeout(() => map.invalidateSize(), 100);
+  }, []);
+  return null;
+};
+
 const SmartBounds = ({
   origin, destination, selectedRoute,
   shapeCoordinates, shapeCoordinatesLeg2, shapeKey,
@@ -77,7 +82,6 @@ const SmartBounds = ({
 
     const r = selectedRoute as any;
 
-    
     if (selectedRoute && shapeKey && shapeKey !== lastShapeKey.current) {
       lastShapeKey.current = shapeKey;
       const points: [number, number][] = [];
@@ -104,7 +108,6 @@ const SmartBounds = ({
       return;
     }
 
- 
     if (selectedRoute && shapeKey === lastShapeKey.current) {
       const hasShape = (shapeCoordinates?.length ?? 0) > 1 || (shapeCoordinatesLeg2?.length ?? 0) > 1;
       if (hasShape) {
@@ -126,7 +129,6 @@ const SmartBounds = ({
       return;
     }
 
- 
     const originChanged = origin?.lat !== lastOriginLat.current || origin?.lng !== lastOriginLng.current;
     const destChanged   = destination?.lat !== lastDestLat.current || destination?.lng !== lastDestLng.current;
 
@@ -140,7 +142,6 @@ const SmartBounds = ({
       return;
     }
 
-   
     if (origin?.lat && originChanged && !destination?.lat) {
       map.setView([origin.lat, origin.lng], 13);
       lastOriginLat.current = origin.lat; lastOriginLng.current = origin.lng;
@@ -150,7 +151,6 @@ const SmartBounds = ({
   return null;
 };
 
-  
 const LocateButton = ({ onLocate, onError }: LocateButtonProps) => {
   const map = useMap();
   const [locating, setLocating] = useState(false);
@@ -202,7 +202,6 @@ const LocateButton = ({ onLocate, onError }: LocateButtonProps) => {
   );
 };
 
-// map view
 const MapView = ({
   origin, destination,
   busStops             = [],
@@ -266,6 +265,8 @@ const MapView = ({
       >
         <TileLayer attribution={MAP_CONFIG.ATTRIBUTION} url={MAP_CONFIG.TILE_LAYER} />
 
+        <InvalidateSize />
+
         <SmartBounds
           origin={origin} destination={destination}
           selectedRoute={selectedRoute}
@@ -279,7 +280,6 @@ const MapView = ({
           onError={(msg) => { setLocationError(msg); setTimeout(() => setLocationError(null), 3000); }}
         />
 
-    
         {userLocation && (
           <Marker position={[userLocation.lat, userLocation.lng]} icon={userLocationIcon}>
             <Popup>
@@ -290,7 +290,6 @@ const MapView = ({
           </Marker>
         )}
 
-    
         {hasValidOrigin && !selectedRoute && (
           <Marker position={[origin!.lat, origin!.lng]} icon={originIcon}>
             <Popup>
@@ -302,7 +301,6 @@ const MapView = ({
           </Marker>
         )}
 
- 
         {hasValidDest && !selectedRoute && (
           <Marker position={[destination!.lat, destination!.lng]} icon={destinationIcon}>
             <Popup>
@@ -314,7 +312,6 @@ const MapView = ({
           </Marker>
         )}
 
-         
         {leg1Positions && (
           <>
             <Polyline positions={leg1Positions} color="#000000" weight={7} opacity={0.15} />
@@ -322,7 +319,6 @@ const MapView = ({
           </>
         )}
 
-       
         {leg2Positions && (
           <>
             <Polyline positions={leg2Positions} color="#000000" weight={7} opacity={0.15} />
@@ -330,12 +326,10 @@ const MapView = ({
           </>
         )}
 
-     
         {fallbackPositions && (
           <Polyline positions={fallbackPositions} color="#667eea" weight={3} opacity={0.5} dashArray="8,12" />
         )}
 
-        
         {busStops.map((stop) => {
           if (!isValidCoord(stop.lat) || !isValidCoord(stop.lng)) return null;
           return (
@@ -349,7 +343,6 @@ const MapView = ({
         })}
       </MapContainer>
 
-   
       {locationError && (
         <div
           onClick={() => setLocationError(null)}
@@ -359,7 +352,6 @@ const MapView = ({
         </div>
       )}
 
-   
       {showLegend && (
         <div className="absolute bottom-6 right-3 z-[1000] bg-white border border-gray-200 rounded-[8px] px-[10px] py-[7px] flex flex-col gap-[5px] shadow-[0_2px_8px_rgba(0,0,0,0.12)] backdrop-blur-sm">
           <div className="flex items-center gap-[7px] font-['DM_Sans'] text-[11px] font-semibold text-gray-800 whitespace-nowrap">
@@ -379,7 +371,6 @@ const MapView = ({
         </div>
       )}
 
-      {/*  stop card overlay */}
       {selectedStop && (
         <BusStopCard
           stop={selectedStop}

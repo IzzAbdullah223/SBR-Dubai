@@ -297,7 +297,7 @@ export declare const getWalletByUserId: (userId: number) => Promise<{
     lastRecharge: Date | null;
     lastTransaction: Date | null;
 } | null>;
-export declare const createWallet: (userId: number) => Promise<{
+export declare const createWallet: (userId: number, startingBalance?: number) => Promise<{
     id: number;
     status: import("./generated/prisma/enums.js").WalletStatus;
     createdAt: Date;

@@ -80,10 +80,14 @@ export const getWalletByUserId = async (userId) => {
         where: { userId },
     });
 };
-export const createWallet = async (userId) => {
-    const cardNumber = `01-${Math.random().toString().slice(2, 7)}`;
+export const createWallet = async (userId, startingBalance = 0) => {
     return prisma.virtualWallet.create({
-        data: { userId, cardNumber },
+        data: {
+            userId,
+            balance: startingBalance,
+            // auto-generates cardNumber via pre-save equivalent
+            cardNumber: `01-${Math.floor(10000 + Math.random() * 90000)}`,
+        }
     });
 };
 export const updateWalletBalance = async (id, newBalance, rechargeAmount) => {

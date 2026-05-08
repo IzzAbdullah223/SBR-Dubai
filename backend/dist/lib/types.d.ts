@@ -21,14 +21,7 @@ export declare const FindBusesSchema: z.ZodObject<{
     }>>;
 }, z.z.core.$strip>;
 export interface Weights {
-    time: number;
-    cost: number;
-    walkingDistance: number;
-    transfers: number;
-}
-export interface NormalizedWeights {
-    arrivalTime: number;
-    travelTime: number;
+    totalJourneyTime: number;
     cost: number;
     walkingDistance: number;
     transfers: number;

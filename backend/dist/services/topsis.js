@@ -1,21 +1,9 @@
-import {} from "../lib/types.js";
-const normalizeWeights = (weights) => {
-    const total = weights.time + weights.cost + weights.walkingDistance + weights.transfers;
-    return {
-        arrivalTime: (weights.time / 2) / total,
-        travelTime: (weights.time / 2) / total,
-        cost: weights.cost / total,
-        walkingDistance: weights.walkingDistance / total,
-        transfers: weights.transfers / total,
-    };
-};
 export const rankBuses = (buses, weights) => {
     if (!buses || buses.length === 0)
         return [];
     if (buses.length === 1)
         return [{ ...buses[0], score: 1.0 }];
-    const criteria = ['arrivalTime', 'travelTime', 'cost', 'walkingDistance', 'transfers'];
-    const normalizedWeights = normalizeWeights(weights);
+    const criteria = ['totalJourneyTime', 'cost', 'walkingDistance', 'transfers'];
     const normalizedMatrix = criteria.map(criterion => {
         const values = buses.map(bus => bus[criterion]);
         const denominator = Math.sqrt(values.reduce((sum, val) => sum + val * val, 0));
@@ -23,7 +11,7 @@ export const rankBuses = (buses, weights) => {
             return values.map(() => 0);
         return values.map(val => val / denominator);
     });
-    const weightedMatrix = criteria.map((criterion, idx) => normalizedMatrix[idx].map(val => val * normalizedWeights[criterion]));
+    const weightedMatrix = criteria.map((criterion, idx) => normalizedMatrix[idx].map(val => val * weights[criterion]));
     const idealSolution = criteria.map((_, idx) => Math.min(...weightedMatrix[idx]));
     const negativeIdealSolution = criteria.map((_, idx) => Math.max(...weightedMatrix[idx]));
     const distances = buses.map((_, busIdx) => {

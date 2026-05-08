@@ -52,6 +52,7 @@ const useShape = (selectedBus: any) => {
     setError(null)
 
     if (!selectedBus) return
+    console.log('selectedBus lineId:', selectedBus.lineId, selectedBus.lineIdReturn, selectedBus.journeyType)
 
     const fetchShape = async () => {
       setLoading(true)
