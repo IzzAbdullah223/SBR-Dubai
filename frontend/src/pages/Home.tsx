@@ -51,7 +51,6 @@ const Home = ({
   showSignUp,
   handleLoginSuccess,
   handleSwitchToSignUp,
-  handleSwitchToLogin,
   openLogin,
   openSignUp,
   closeLogin,

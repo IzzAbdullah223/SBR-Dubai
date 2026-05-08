@@ -3,7 +3,7 @@ import { settingsAPI } from '../services/api'
 import type { User } from '../lib/types'
 
 const useSettings = (
-  user:         User | null,
+  user: User | null,
   onUserUpdate: ((user: User) => void) | undefined,
   onLogout:     (() => void) | undefined
 ) => {

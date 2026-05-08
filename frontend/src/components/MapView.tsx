@@ -213,7 +213,7 @@ const MapView = ({
   onStopClick, onStopClose, isFavorite,
   onAddFavorite, onRemoveFavorite,
   onSetAsOrigin, onSetAsDestination,
-  user, theme = 'light',
+  user,
 }: MapViewProps) => {
   const [userLocation,  setUserLocation]  = useState<{ lat: number; lng: number } | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
